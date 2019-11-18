@@ -6,11 +6,14 @@ User Interface created originally for ESX and then adapted for VRP/VRPEX.
 [![TREW HUD UI DEMO](https://i.imgur.com/DyaZ6Jl.png)](https://youtu.be/u1QTJ5aHcGA)
 
 
+
 ## Installation
 
 1.  Extract the .zip or Open the .zip.
 2.  Place `trew_hud_ui` in your resources directory.
 3.  Add `start trew_hud_ui` to your server.cfg
+
+
 
 ## Special Instructions for the ESX version
 
@@ -20,15 +23,18 @@ User Interface created originally for ESX and then adapted for VRP/VRPEX.
 -   [esx_society](https://github.com/ESX-Org/esx_society)
 -   [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount)
 
+
 ### Optional
 
 -   [esx_basicneeds](https://github.com/ESX-Org/esx_basicneeds)
 -   [esx_status](https://github.com/ESX-Org/esx_status)
 -   [LegacyFuel](https://github.com/InZidiuZ/LegacyFuel) (it should be started **BEFORE** the trew\_hud\_ui)
 
+
 ### What you can disable
 
 -   [RadarWhileDriving](https://github.com/Flatracer/RadarWhileDriving)
+
 
 ### Post Installation
 
@@ -62,6 +68,8 @@ for this one
 		end)
 		
 
+
+
 ## Special Instructions for the VRP/VRPEX versions
 
 Inside **config.lua** you will see a _Config.vRP_ with certain items needed to set up properly, like black money. Since black money is considered an item on VRP/VRPEX versions, you need to put the ID of said item on this configuration. On most VRP versions, the ID is **dirty_money**.
@@ -71,6 +79,9 @@ Special settings for vRP/vRPEX
 
 -   **items**
     -   _blackMoney:_ The item ID for Black Money.
+    
+    
+    
 
 ## Config.lua settings
 
