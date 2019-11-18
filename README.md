@@ -1,3 +1,4 @@
+
 # Trew HUD UI 2.0
 
 User Interface created originally for ESX and then adapted for VRP/VRPEX.
@@ -35,6 +36,7 @@ User Interface created originally for ESX and then adapted for VRP/VRPEX.
 -   Go to **es_extended** _config.lua_ and turn **Config.EnableHud** to _false_
 -   If needed, go to **esx_basicneeds** _main.lua_ and replace this code
 
+
 		TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
 			return true
 		end, function(status)
@@ -48,6 +50,7 @@ User Interface created originally for ESX and then adapted for VRP/VRPEX.
 		
 for this one
 
+-
 		TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
 			return false
 		end, function(status)
@@ -219,6 +222,7 @@ _**Usage example:**_ /toggleui
 
 This HUD is the product of 4 months of work, craft and creativity. While now I'm giving it for free, if you want to help, consider donating any ammount you want to. It will be really appreciated. :)
 
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S735RJA49KSJ8)
 
 
 ## Discord
