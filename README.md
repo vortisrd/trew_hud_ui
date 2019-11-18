@@ -46,7 +46,6 @@ User Interface created originally for ESX and then adapted for VRP/VRPEX.
 			status.remove(750)
 		end)
 		
-https://i.imgur.com/DyaZ6Jl.png
 for this one
 
 		TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
@@ -167,6 +166,7 @@ Creates a new indicator after the existing ones.
 			    color = '#FF0090',
 			    icon = '<i class="fas fa-brain"></i>'
 			});
+			STRESS_ACTIVE = true
 		end
 
 	end)
