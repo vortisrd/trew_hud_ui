@@ -1,5 +1,4 @@
-
-# Trew HUD UI 2.0
+# Trew HUD UI
 
 User Interface created originally for ESX and then adapted for VRP/VRPEX.
 
@@ -222,7 +221,7 @@ _**Usage example:**_ /toggleui
 
 This HUD is the product of 4 months of work, craft and creativity. While now I'm giving it for free, if you want to help, consider donating any ammount you want to. It will be really appreciated. :)
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S735RJA49KSJ8)
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=S735RJA49KSJ8&currency_code=USD&source=url)
 
 
 ## Discord
