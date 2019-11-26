@@ -233,8 +233,3 @@ _**Usage example:**_ /toggleui
 This HUD is the product of 4 months of work, craft and creativity. While now I'm giving it for free, if you want to help, consider donating any ammount you want to. It will be really appreciated. :)
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=S735RJA49KSJ8&currency_code=USD&source=url)
-
-
-## Discord
-
-[![Discord Banner 2](https://discordapp.com/api/guilds/531620822054600714/widget.png?style=banner2)](https://discord.gg/6pAfTkB)
