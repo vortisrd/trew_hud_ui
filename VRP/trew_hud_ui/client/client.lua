@@ -626,6 +626,11 @@ end)
 
 
 AddEventHandler('onClientMapStart', function()
+
+	SendNUIMessage({ action = 'ui', config = Config.ui })
+	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
+	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
+	
 	if Config.ui.showVoice == true then
 		if Config.voice.levels.current == 0 then
 			NetworkSetTalkerProximity(Config.voice.levels.default)
