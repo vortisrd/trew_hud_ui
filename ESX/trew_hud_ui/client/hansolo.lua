@@ -5,7 +5,4 @@
 --
 
 AddEventHandler('onClientMapStart', function()
-	SendNUIMessage({ action = 'ui', config = Config.ui })
-	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
-	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
 end)
