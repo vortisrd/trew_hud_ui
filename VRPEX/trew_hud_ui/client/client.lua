@@ -373,7 +373,7 @@ AddEventHandler('trew_hud_ui:setInfo', function(info)
 		showPlayerStatus = (showPlayerStatus+1)
 
 		playerStatus['status'][showPlayerStatus] = {
-			name = 'hunger',
+			name = 'thirst',
 			value = info['thirst']
 		}
 	end
