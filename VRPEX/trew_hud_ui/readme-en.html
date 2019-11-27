@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TREW HUD UI</title>
+	<link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+ 	<div class="stackedit__html">
+ 		<h1 id="trew-hud-ui">Trew HUD UI</h1>
+		
+		<p>User Interface created originally for ESX and then adapted for VRP/VRPEX.</p>
+		
+		<h2 id="demo">Demo</h2>
+		<p><iframe width="560" height="315" src="https://www.youtube.com/embed/u1QTJ5aHcGA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+
+
+		<h2 id="installation">Installation</h2>
+		<ol>
+			<li>Extract the .zip or Open the .zip.</li>
+			<li>Place <code>trew_hud_ui</code> in your resources directory.</li>
+			<li>Add <code>start trew_hud_ui</code> to your server.cfg</li>
+		</ol>
+		
+		<h2 id="requirements">Special Instructions for the ESX version</h2>
+		<h3 id="requirements">Requirements</h3>
+		<ul>
+			<li><a href="https://github.com/ESX-Org/es_extended">es_extended</a></li>
+			<li><a href="https://github.com/ESX-Org/esx_society">esx_society</a></li>
+			<li><a href="https://github.com/ESX-Org/esx_addonaccount">esx_addonaccount</a></li>
+		</ul>
+		
+		<h3 id="optional">Optional</h3>
+		<ul>
+			<li><a href="https://github.com/ESX-Org/esx_basicneeds">esx_basicneeds</a></li>
+			<li><a href="https://github.com/ESX-Org/esx_status">esx_status</a></li>
+			<li><a href="https://github.com/InZidiuZ/LegacyFuel">LegacyFuel</a> (it should be started <strong>BEFORE</strong> the trew_hud_ui)</li>
+		</ul>
+
+		<h3 id="what-you-can-disable">What you can disable</h3>
+		<ul>
+			<li><a href="https://github.com/Flatracer/RadarWhileDriving">RadarWhileDriving</a></li>
+		</ul>
+		
+		<h3 id="post-installation">Post Installation</h3>
+		<ul>
+			<li>Go to <strong>es_extended</strong> <em>config.lua</em> and turn <strong>Config.EnableHud</strong> to <em>false</em></li>
+			<li>If needed, go to <strong>esx_basicneeds</strong> <em>main.lua</em> and replace this code</li>
+		</ul>
+		<pre>
+			<code>
+	TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
+		return true
+	end, function(status)
+		status.remove(1000)
+	end)
+	
+	TriggerEvent('esx_status:registerStatus', 'thirst', 1000000, '#0C98F1', function(status)
+		return true
+	end, function(status)
+		status.remove(750)
+	end)
+			</code>
+		</pre>
+		
+		<p>for this one</p>
+
+		<pre>
+			<code>
+	TriggerEvent('esx_status:registerStatus', 'hunger', 1000000, '#CFAD0F', function(status)
+		return false
+	end, function(status)
+		status.remove(1000)
+	end)
+	
+	TriggerEvent('esx_status:registerStatus', 'thirst', 1000000, '#0C98F1', function(status)
+		return false
+	end, function(status)
+		status.remove(750)
+	end)
+			</code>
+		</pre>
+
+
+		<h2 id="requirements">Special Instructions for the VRP/VRPEX versions</h2>
+
+		<p>
+			Inside <strong>config.lua</strong> you will see a <em>Config.vRP</em> with certain items needed to set up properly, like black money. Since black money is considered an item on VRP/VRPEX versions, you need to put the ID of said item on this configuration. On most VRP versions, the ID is <strong>dirty_money</strong>.
+		</p>
+
+		<p>
+			<strong>Config.vRP</strong><br>
+			Special settings for vRP/vRPEX
+		</p>
+		<ul>
+			<li><strong>items</strong>
+				<ul>
+					<li><em>blackMoney:</em> The item ID for Black Money.</li>
+				</ul>
+			</li>
+		</ul>
+
+
+		<h2 id="config.lua-settings">Config.lua settings</h2>
+		
+		<p>
+			<strong>Config.Locale</strong><br>
+			The language. Default is <em>en</em>.
+		</p>
+		
+		<p>
+			<strong>Config.serverLogo</strong><br>
+			Logo for your server. It’s suggested that you upload a <strong>PNG</strong> file to websites like <strong><a href="http://imgur.com">imgur.com</a></strong> and then paste the link there.
+		</p>
+		
+		<p>
+			<strong>Config.font</strong><br>
+			Font configuration for the UI. Default is <em>Montserrat</em> and the link points up to <em>Google Fonts</em>. It’s suggested that you look up for a font there and place the name and the link on it’s location.
+		</p>
+
+		<ul>
+			<li><strong>name</strong>: The name of the font</li>
+			<li><strong>link</strong>: CSS Stylesheet file link for the font</li>
+		</ul>
+		
+		<p>
+			<strong>Config.date</strong><br>
+			Date format for the GPS location.
+		</p>
+
+		<ul>
+			<li>
+				<p><strong>format</strong>:</p>
+				<ul>
+					<li><em>default:</em> It’s the default format;</li>
+					<li><em>withWeekDay:</em> Format that shows week day names, like <em>monday, tuesday, wednesday</em>, etc;</li>
+					<li><em>withHours:</em> Format that shows the current time in game;</li>
+					<li><em>withWeekAndHours:</em> A mix of <em>withWeekDay</em> and <em>withHours</em>.</li>
+					<li><em>simple:</em> Format that shows only day and month;</li>
+					<li><em>simpleWithHours:</em> Same as <em>simple</em>, but also showing the time.</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>AmPm</strong>: set it to <em>true</em> if you want to use AM/PM time format, <em>false</em> if you don’t.</p>
+			</li>
+		</ul>
+
+		<p>
+			<strong>Config.voice</strong><br>
+			Voice settings for the UI. OneSync compatible
+		</p>
+
+
+		<ul>
+			<li>
+				<p><strong>levels</strong>:</p>
+				<ul>
+					<li><em>default:</em> Distance in meters for a default distance. <strong>Default</strong> is <em>5.0</em>;</li>
+					<li><em>shout:</em> Distance in meters for a shout distance. <strong>Default</strong> is <em>12.0</em>;</li>
+					<li><em>whisper:</em> Distance in meters for a whisper distance. <strong>Default</strong> is <em>1.0</em>;</li>
+					<li><em>current:</em> It’s <strong>important</strong> that this is left unchanged.</li>
+				</ul>
+			</li>
+			<li>
+				<p><strong>keys</strong>:</p>
+				<ul>
+					<li><em>distance:</em> Distance in meters for a default distance. <strong>Default</strong> is <em>HOME</em>.</li>
+				</ul>
+			</li>
+		</ul>
+
+
+		<p>
+			<strong>Config.vehicle</strong><br>
+			Vehicle and speedometer settings
+		</p>
+		
+		<ul>
+			<li><strong>speedUnit</strong>: It should be set either <em>KMH</em> or <em>MPH</em>. <strong>Default</strong> is <em>KMH</em>;</li>
+			<li><strong>maxSpeed</strong>: The top speed the Speedometer is allowed to go. Default is <em>240</em>;</li>
+			<li><strong>keys</strong>:
+				<ul>
+					<li><em>seatbelt:</em> Buckle/unbuckle seatbelt. <strong>Default</strong> is <em>K</em>;</li>
+					<li><em>cruiser:</em> Activate/deactivate cruiser speed. <strong>Default</strong> is <em>CAPS</em>;</li>
+					<li><em>signalLeft:</em> Activate/deactivate car left signal. <strong>Default</strong> is <em>LEFT</em>;</li>
+					<li><em>signalRight:</em> Activate/deactivate car right signal. <strong>Default</strong> is <em>RIGHT</em>;</li>
+					<li><em>signalBoth:</em> Activate/deactivate car danger signal. <strong>Default</strong> is <em>DOWN</em>;</li>
+				</ul>
+			</li>
+		</ul>
+
+		<p>
+			<strong>Config.ui</strong><br>
+			Display or hide elements of the HUD
+		</p>
+		
+		<ul>
+			<li><strong>showJob</strong>: Displays the job name. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showWalletMoney</strong>: Displays the money on your wallet. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showBankMoney</strong>: Displays the money on your bank account. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showBlackMoney</strong>: Displays the black money you have. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showSocietyMoney</strong>: If you are the boss of a job, it displays the money you have in the society vault. <strong>Default</strong> is <em>true</em>; <strong style="color:red;">(Society money only works on ESX)</strong></li>
+			<li><strong>showDate</strong>: Displays the date. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showLocation</strong>: Displays the location. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showHealth</strong>: Displays your health. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showArmor</strong>: Displays your armor. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showStamina</strong>: Displays your stamina. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showHunger</strong>: Displays hunger. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showThirst</strong>: Displays thirst. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showMinimap</strong>: Displays the minimap while off the vehicle. <strong>Default</strong> is <em>false</em>;</li>
+			<li><strong>showVoice</strong>: Displays/use the voice controller. <strong>Default</strong> is <em>true</em>;</li>
+			<li><strong>showWeapons</strong>: Displays the weapons you have on your hand, with ammo. <strong>Default</strong> is <em>true</em>;</li>
+		</ul>
+
+
+
+		<h2 id="chat-commands">Adding Custom Status</h2>
+		<p>
+			<div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/s/kzns5/iztkyh" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+			<small><strong>Check by the thirst indicator</strong></small>
+		</p>
+		<p>
+			You can create custom indicators for status you already have, like stress status, drunken, shit, piss, you name it! You would just have to use the new <strong>exports</strong> functions. I would recommend you create a new script with the code and load it below <strong>trew_hud_ui</strong> on your server.cfg.
+		</p>
+
+		<p><br></p>
+
+		<p>
+			<strong>exports.trew_hud_ui.createStatus</strong><br>
+			Creates a new indicator after the existing ones.
+		</p>
+
+		<p><strong>Example:</strong></p>
+		<pre>
+			<code>
+	local STRESS_ACTIVE = false
+
+	AddEventHandler('playerSpawned', function()
+		
+		if STRESS_ACTIVE == false then
+			exports.trew_hud_ui:createStatus({
+			    status = 'stress',
+			    color = '#FF0090',
+			    icon = '&lt;i class="fas fa-brain"&gt;&lt;/i&gt;'
+			});
+			STRESS_ACTIVE = true
+		end
+
+	end)
+			</code>
+		</pre>
+
+		<p><strong>Usage:</strong></p>
+		<ul>
+			<li><strong>status</strong>: The status ID. It's purely to identify it;</li>
+			<li><strong>color</strong>: The color you want for the status;</li>
+			<li><strong>icon</strong>: The HTML code for the icon. You can search on <a href="https://fontawesome.com/" target="_blank">FontAwesome</a> for an icon and when you find one of your liking, change it there.</li>
+		</ul>
+
+
+		<p><br></p>
+
+		<p>
+			<strong>exports.trew_hud_ui.setStatus</strong><br>
+			It is what makes the status update. It should be set on a Wait() timer to update on whenever your custom status is. The example below ticks while getting from a custom status registered on <strong>esx_status</strong>. 
+		</p>
+
+		<p><strong>Example:</strong></p>
+		<pre>
+			<code>
+	Citizen.CreateThread(function()
+		while true do
+			Citizen.Wait(1000)
+			
+			local STRESS_STATUS
+	
+			TriggerEvent('esx_status:getStatus', 'stress', function(status)
+			    STRESS_STATUS = status.getPercent()
+			end)
+	
+			exports.trew_hud_ui:setStatus({
+			    name = 'stress',
+			    value = STRESS_STATUS
+			});
+		end
+	end)
+			</code>
+		</pre>
+
+		<p><strong>Usage:</strong></p>
+		<ul>
+			<li><strong>name</strong>: The name of the status. It should be correspondent with the ID when you created it;</li>
+			<li><strong>value</strong>: The percentage value for the status, from 0 to 100.</li>
+		</ul>
+
+
+		<h2 id="chat-commands">Chat commands</h2>
+		<p>
+			<strong>/toggleui</strong><br>
+			Enables/Disables HUD information elements, like <em>and job all types money</em>. Useful for streamers.
+		</p>
+		<p><em><strong>Usage example:</strong></em> /toggleui</p>
+
+
+		<h2>Donate</h2>
+		<p>This HUD is the product of 4 months of work, craft and creativity. While now I'm giving it for free, if you want to help, consider donating any ammount you want to. It will be really appreciated. :)</p>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_donations" />
+			<input type="hidden" name="business" value="S735RJA49KSJ8" />
+			<input type="hidden" name="currency_code" value="BRL" />
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+			<img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+		</form>
+
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fluidvids.js/2.4.1/fluidvids.min.js"></script>
+	<script>fluidvids.init();</script>
+</body>
+
+</html>
