@@ -22,7 +22,7 @@ AddEventHandler('trew_hud_ui:getServerInfo', function()
 		local info = {
 			job = job,
 			money = xPlayer.getMoney(),
-			bankMoney = xPlayer.getBank(),
+			bankMoney = xPlayer.getAccount('bank').money,
 			blackMoney = xPlayer.getAccount('black_money').money
 		}
 
