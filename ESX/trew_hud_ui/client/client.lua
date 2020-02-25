@@ -15,6 +15,16 @@ Citizen.CreateThread(function()
 end)
 
 
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+  ESX.PlayerData = xPlayer
+  PlayerLoaded = true
+end)
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+  ESX.PlayerData.job = job
+end)
 
 
 
@@ -354,75 +364,87 @@ Citizen.CreateThread(function()
 			}
 		end
 
-		TriggerServerEvent('trew_hud_ui:getServerInfo')
-
 		if showPlayerStatus > 0 then
 			SendNUIMessage(playerStatus)
 		end
 
-	end
-end)
+
+  	TriggerEvent('esx:getSharedObject', function(obj)
+  		ESX = obj
+  		ESX.PlayerData = ESX.GetPlayerData()
+  	end)
 
 
--- Overall Info
-RegisterNetEvent('trew_hud_ui:setInfo')
-AddEventHandler('trew_hud_ui:setInfo', function(info)
+  	if ESX.PlayerData.job ~= nil then
+  	   local job
+  	   local blackMoney
+  	   local bank
+  	   
+        if ESX.PlayerData.job.label == ESX.PlayerData.job.grade_label then
+          job = ESX.PlayerData.job.grade_label
+        else
+          job = ESX.PlayerData.job.label .. ': ' .. ESX.PlayerData.job.grade_label
+        end
+  
+  
+        for i=1, #ESX.PlayerData.accounts, 1 do
+          if ESX.PlayerData.accounts[i].name == 'black_money' then
+                blackMoney     = ESX.PlayerData.accounts[i].money
+          elseif ESX.PlayerData.accounts[i].name == 'bank' then
+                bank     = ESX.PlayerData.accounts[i].money
+          end
+        end
+  
+  	SendNUIMessage({ action = 'setText', id = 'job', value = job })
+  	SendNUIMessage({ action = 'setMoney', id = 'wallet', value = ESX.PlayerData.money })
+  	SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
+  	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
+  
+  		if ESX.PlayerData.job.grade_name ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
+  			if (Config.ui.showSocietyMoney == true) then
+  				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
+  			end
+  			ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
+  				SendNUIMessage({ action = 'setMoney', id = 'society', value = money })
+  			end, ESX.PlayerData.job.name)
+  		else
+  			SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })
+  		end
+  	end
 
-	SendNUIMessage({ action = 'setText', id = 'job', value = info['job'] })
-	SendNUIMessage({ action = 'setMoney', id = 'wallet', value = info['money'] })
-	SendNUIMessage({ action = 'setMoney', id = 'bank', value = info['bankMoney'] })
-	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = info['blackMoney'] })
-
-	TriggerEvent('esx:getSharedObject', function(obj)
-		ESX = obj
-		ESX.PlayerData = ESX.GetPlayerData()
-	end)
-
-	if ESX.PlayerData.job ~= nil then
-		if ESX.PlayerData.job.grade_name ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
-			if (Config.ui.showSocietyMoney == true) then
-				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
-			end
-			ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
-				SendNUIMessage({ action = 'setMoney', id = 'society', value = money })
-			end, ESX.PlayerData.job.name)
-		else
-			SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })
-		end
-	end
-
-	local playerStatus 
-	local showPlayerStatus = 0
-	playerStatus = { action = 'setStatus', status = {} }
+  	local playerStatus 
+  	local showPlayerStatus = 0
+  	playerStatus = { action = 'setStatus', status = {} }
 
 
-	if Config.ui.showHunger == true then
-		showPlayerStatus = (showPlayerStatus+1)
+  	if Config.ui.showHunger == true then
+  		showPlayerStatus = (showPlayerStatus+1)
+  
+  		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
+  			playerStatus['status'][showPlayerStatus] = {
+  				name = 'hunger',
+  				value = math.floor(100-status.getPercent())
+  			}
+  		end)
+  
+  	end
+  
+  	if Config.ui.showThirst == true then
+  		showPlayerStatus = (showPlayerStatus+1)
+  
+  		TriggerEvent('esx_status:getStatus', 'thirst', function(status)
+  			playerStatus['status'][showPlayerStatus] = {
+  				name = 'thirst',
+  				value = math.floor(100-status.getPercent())
+  			}
+  		end)
+  	end
 
-		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
-			playerStatus['status'][showPlayerStatus] = {
-				name = 'hunger',
-				value = math.floor(100-status.getPercent())
-			}
-		end)
+  	if showPlayerStatus > 0 then
+  		SendNUIMessage(playerStatus)
+  	end
 
-	end
-
-	if Config.ui.showThirst == true then
-		showPlayerStatus = (showPlayerStatus+1)
-
-		TriggerEvent('esx_status:getStatus', 'thirst', function(status)
-			playerStatus['status'][showPlayerStatus] = {
-				name = 'thirst',
-				value = math.floor(100-status.getPercent())
-			}
-		end)
-	end
-
-	if showPlayerStatus > 0 then
-		SendNUIMessage(playerStatus)
-	end
-
+  end
 
 end)
 
