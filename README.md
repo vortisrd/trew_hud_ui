@@ -2,6 +2,12 @@
 
 User Interface created originally for ESX and then adapted for VRP/VRPEX.
 
+# PROJECT DISCONTINUED
+
+It was nice to play GTA5 RP and learn LUA in order to code the Trew HUD UI, but after so many struggles with not only the FiveM community and with the thing itself, I decided that I will no longer improve this project. It's been 6 months since the last time I played GTA5 RP and it makes no sense to continue this.
+
+If you want to fork this project or send pull request, feel free to do it. It has been a nice ride. :) BALLAS FOREVER!
+
 ## Demo - click on the image below.
 [![TREW HUD UI DEMO](https://i.imgur.com/DyaZ6Jl.png)](https://youtu.be/u1QTJ5aHcGA)
 
