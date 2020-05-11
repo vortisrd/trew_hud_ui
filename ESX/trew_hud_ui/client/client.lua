@@ -668,7 +668,7 @@ end)
 
 
 
-AddEventHandler('onClientMapStart', function()
+AddEventHandler('esx:onPlayerSpawn', function()
 
 	SendNUIMessage({ action = 'ui', config = Config.ui })
 	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
