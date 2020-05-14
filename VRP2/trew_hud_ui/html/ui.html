@@ -1,0 +1,162 @@
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900&display=swap" id="font">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+	<title>TREW UI</title>
+</head>
+
+<body style="font-family: 'Montserrat'">
+	<div id="ui">
+
+
+		<div class="info server" style="display:none;">
+			<div id="server"><img src="https://i.imgur.com/AcgDL9f.png"></div>
+		</div>
+
+
+		<div class="info player">
+			<div id="job" style="display:none;"><span>Jobname</span></div>
+
+			<div id="status">
+				<ul>
+					<li class="icon" id="thirst" style="display:none;"><i class="fas fa-tint"></i><span></span></li>
+					<li class="icon" id="hunger" style="display:none;"><i class="fas fa-utensils"></i><span></span></li>
+					<li class="icon" id="stamina" style="display:none;"><i class="fas fa-running"></i><span></span></li>
+					<li class="icon" id="armor" style="display:none;"><i class="fas fa-shield-alt"></i><span></span></li>
+					<li class="icon" id="health" style="display:none;"><i class="fas fa-heart"></i><span></span></li>
+				</ul>
+			</div>
+
+			<div id="money">
+				<div class="icon text" id="society" style="display:none;"><i class="fas fa-briefcase"></i><span>0</span></div>
+				<div class="icon text" id="bank" style="display:none;"><i class="fas fa-piggy-bank"></i><span>0</span></div>
+				<div class="icon text" id="blackMoney" style="display:none;"><i class="fas fa-user-ninja"></i><span>0</span></div>
+				<div class="icon text" id="wallet" style="display:none;"><i class="fas fa-dollar-sign"></i><span>0</span></div>
+			</div>
+
+			
+		</div>
+
+
+
+
+
+
+
+		<div class="info vehicle inactive animated faster">
+
+			<div id="speedometer">
+
+
+				<div id="progress-speed">
+					<svg viewBox="0 0 100 100">
+						<circle cx="50" cy="50" r="45" class="mask" />
+						<circle cx="50" cy="50" r="45" class="speed zero" />
+					</svg>
+				</div>
+
+
+
+				<div id="vehicle-speed">
+					<span>999</span>
+					<strong>KM/H</strong>
+				</div>
+
+
+
+				<div id="vehicle-gear" class="icon text">
+					<i><img src="img/vehicle-gear.png"></i><span>N</span>
+				</div>
+
+				<div id="vehicle-others" class="icon" style="display:none;">
+					<i class="fas fa-biking"></i>
+				</div>
+
+
+			
+				<div id="vehicle-status-left">
+					<ul>
+						<li class="icon off" id="seatbelt"><i><img src="img/vehicle-seatbelt.png"></i><span style="height: 100%"></span></li>
+						<li class="icon" id="fuel"><i class="fas fa-gas-pump"></i><span></span></li>
+					</ul>
+				</div>
+
+
+				<div id="vehicle-status-right">
+					<ul>
+						<li class="icon normal" id="lights"><i><img src="img/vehicle-lights.png"></i><span></span></li>
+						<li class="icon" id="signals" class="off"><i class="fas fa-arrows-alt-h"></i><span style="height: 100%"></span></li>
+					</ul>
+				</div>
+
+
+
+			</div>
+
+
+
+
+
+		</div>
+
+
+
+
+
+
+		<div class="info weapon animated faster unarmed" id="weapon" style="display:none;">
+			<div id="weapon_image">
+				<img src="img/weapons/pistol.png" alt="">
+			</div>
+
+			<div id="weapon_bullets">
+				<div id="weapon_clip" class="clip"><span>999</span></div>
+				<div id="weapon_ammo" class="ammo"><span>999</span></div>
+			</div>
+			
+			<div class="icon" id="bullets">
+				<i><img src="img/weapon-bullets.png" alt=""></i>
+				<i class="clone"><img src="img/weapon-bullets.png" alt=""></i>
+				<span></span>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div class="info radio">
+			<div id="voice" style="display:none;"><i class="fas fa-microphone-alt"></i></div>
+		</div>
+
+
+
+
+
+
+
+		<div class="info time-and-place">
+			<div class="data">
+				<div id="date" style="display:none;"><span>Hoje é <strong>31 de Fevereiro de 2020</strong></span></div>
+				<div id="location" style="display:none;"><span>Você está em <strong>Aeroporto de Los Santos</strong></span></div>
+			</div>
+		</div>
+
+		<audio id="sounds"><source type="audio/ogg"></audio>
+
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/saferInnerHTML@1/dist/saferInnerHTML.polyfills.min.js"></script>	
+	<script src="app.js"></script>
+</body>
+</html>
