@@ -58,4 +58,12 @@ function trewhudui.event:playerVitalChange(user)
   info.thirst = (1 - user:getVital("water")) * 100
 end
 
+function trewhudui.event:playerJoinGroup(user, name, gtype)
+  info.job = user:getGroupByType('job')
+end
+
+function trewhudui.event:playerLeaveGroup(user, name, gtype)
+  info.job = user:getGroupByType('job')
+end
+
 vRP:registerExtension(trewhudui)
