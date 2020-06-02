@@ -7,7 +7,7 @@ Locales['es'] = {
 		simple = 'Hoy es <strong>%s, %s</strong>',
 		simpleWithHours = 'Es <strong>%s</strong>, <strong>%s, %s</strong>',
 		withWeekday = 'Hoy es <strong>%s, %s de %s, %s</strong>',
-		withHours = 'Es <strong>%s</strong>, <strong>%s de %s, %s</strong>',
+		withHours = 'Son las <strong>%s</strong>, <strong>%s de %s, %s</strong>',
 		withWeekdayAndHours = 'Es <strong>%s</strong>, <strong>%s, %s de %s, %s</strong>'
 	},
 
