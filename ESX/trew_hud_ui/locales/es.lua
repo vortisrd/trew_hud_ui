@@ -67,6 +67,6 @@ Locales['es'] = {
 	['month_10'] = 'Noviembre',
 	['month_11'] = 'Diciembre',
 
-	['toggleui'] = 'Enables/Disables parts of the HUD',
+	['toggleui'] = 'Habilita/Deshabilita parts of the HUD',
 
 }
