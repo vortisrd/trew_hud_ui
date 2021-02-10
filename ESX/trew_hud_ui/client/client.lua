@@ -1,38 +1,29 @@
-local ESX	 = nil
+ESX = nil
 
--- ESX
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
-
-	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
-	end
-
+CreateThread(function()
+	while ESX == nil do TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) Wait(0) end
+	while ESX.GetPlayerData().job == nil do Wait(100) end
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded', function(xPlayer)
+  ESX.PlayerData = xPlayer
+  PlayerLoaded = true
+end)
 
-
-
-
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+  ESX.PlayerData.job = job
+end)
 
 local zones = { ['AIRP'] = "Los Santos International Airport", ['ALAMO'] = "Alamo Sea", ['ALTA'] = "Alta", ['ARMYB'] = "Fort Zancudo", ['BANHAMC'] = "Banham Canyon Dr", ['BANNING'] = "Banning", ['BEACH'] = "Vespucci Beach", ['BHAMCA'] = "Banham Canyon", ['BRADP'] = "Braddock Pass", ['BRADT'] = "Braddock Tunnel", ['BURTON'] = "Burton", ['CALAFB'] = "Calafia Bridge", ['CANNY'] = "Raton Canyon", ['CCREAK'] = "Cassidy Creek", ['CHAMH'] = "Chamberlain Hills", ['CHIL'] = "Vinewood Hills", ['CHU'] = "Chumash", ['CMSW'] = "Chiliad Mountain State Wilderness", ['CYPRE'] = "Cypress Flats", ['DAVIS'] = "Davis", ['DELBE'] = "Del Perro Beach", ['DELPE'] = "Del Perro", ['DELSOL'] = "La Puerta", ['DESRT'] = "Grand Senora Desert", ['DOWNT'] = "Downtown", ['DTVINE'] = "Downtown Vinewood", ['EAST_V'] = "East Vinewood", ['EBURO'] = "El Burro Heights", ['ELGORL'] = "El Gordo Lighthouse", ['ELYSIAN'] = "Elysian Island", ['GALFISH'] = "Galilee", ['GOLF'] = "GWC and Golfing Society", ['GRAPES'] = "Grapeseed", ['GREATC'] = "Great Chaparral", ['HARMO'] = "Harmony", ['HAWICK'] = "Hawick", ['HORS'] = "Vinewood Racetrack", ['HUMLAB'] = "Humane Labs and Research", ['JAIL'] = "Bolingbroke Penitentiary", ['KOREAT'] = "Little Seoul", ['LACT'] = "Land Act Reservoir", ['LAGO'] = "Lago Zancudo", ['LDAM'] = "Land Act Dam", ['LEGSQU'] = "Legion Square", ['LMESA'] = "La Mesa", ['LOSPUER'] = "La Puerta", ['MIRR'] = "Mirror Park", ['MORN'] = "Morningwood", ['MOVIE'] = "Richards Majestic", ['MTCHIL'] = "Mount Chiliad", ['MTGORDO'] = "Mount Gordo", ['MTJOSE'] = "Mount Josiah", ['MURRI'] = "Murrieta Heights", ['NCHU'] = "North Chumash", ['NOOSE'] = "N.O.O.S.E", ['OCEANA'] = "Pacific Ocean", ['PALCOV'] = "Paleto Cove", ['PALETO'] = "Paleto Bay", ['PALFOR'] = "Paleto Forest", ['PALHIGH'] = "Palomino Highlands", ['PALMPOW'] = "Palmer-Taylor Power Station", ['PBLUFF'] = "Pacific Bluffs", ['PBOX'] = "Pillbox Hill", ['PROCOB'] = "Procopio Beach", ['RANCHO'] = "Rancho", ['RGLEN'] = "Richman Glen", ['RICHM'] = "Richman", ['ROCKF'] = "Rockford Hills", ['RTRAK'] = "Redwood Lights Track", ['SANAND'] = "San Andreas", ['SANCHIA'] = "San Chianski Mountain Range", ['SANDY'] = "Sandy Shores", ['SKID'] = "Mission Row", ['SLAB'] = "Stab City", ['STAD'] = "Maze Bank Arena", ['STRAW'] = "Strawberry", ['TATAMO'] = "Tataviam Mountains", ['TERMINA'] = "Terminal", ['TEXTI'] = "Textile City", ['TONGVAH'] = "Tongva Hills", ['TONGVAV'] = "Tongva Valley", ['VCANA'] = "Vespucci Canals", ['VESP'] = "Vespucci", ['VINE'] = "Vinewood", ['WINDF'] = "Ron Alternates Wind Farm", ['WVINE'] = "West Vinewood", ['ZANCUDO'] = "Zancudo River", ['ZP_ORT'] = "Port of South Los Santos", ['ZQ_UAR'] = "Davis Quartz" }
-
 local Keys = {
 	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, ["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177, ["TAB"] = 37, ["Q"] = 44, ["W"] = 32, ["E"] = 38, ["R"] = 45, ["T"] = 245, ["Y"] = 246, ["U"] = 303, ["P"] = 199, ["["] = 39, ["]"] = 40, ["ENTER"] = 18, ["CAPS"] = 137, ["A"] = 34, ["S"] = 8, ["D"] = 9, ["F"] = 23, ["G"] = 47, ["H"] = 74, ["K"] = 311, ["L"] = 182, ["LEFTSHIFT"] = 21, ["Z"] = 20, ["X"] = 73, ["C"] = 26, ["V"] = 0, ["B"] = 29, ["N"] = 249, ["M"] = 244, [","] = 82, ["."] = 81, ["LEFTCTRL"] = 36, ["LEFTALT"] = 19, ["SPACE"] = 22, ["RIGHTCTRL"] = 70, ["HOME"] = 213, ["PAGEUP"] = 10, ["PAGEDOWN"] = 11, ["DELETE"] = 178, ["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173, ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
 local AllWeapons = json.decode('{"melee":{"dagger":"0x92A27487","bat":"0x958A4A8F","bottle":"0xF9E6AA4B","crowbar":"0x84BD7BFD","unarmed":"0xA2719263","flashlight":"0x8BB05FD7","golfclub":"0x440E4788","hammer":"0x4E875F73","hatchet":"0xF9DCBF2D","knuckle":"0xD8DF3C3C","knife":"0x99B507EA","machete":"0xDD5DF8D9","switchblade":"0xDFE37640","nightstick":"0x678B81B1","wrench":"0x19044EE0","battleaxe":"0xCD274149","poolcue":"0x94117305","stone_hatchet":"0x3813FC08"},"handguns":{"pistol":"0x1B06D571","pistol_mk2":"0xBFE256D4","combatpistol":"0x5EF9FEC4","appistol":"0x22D8FE39","stungun":"0x3656C8C1","pistol50":"0x99AEEB3B","snspistol":"0xBFD21232","snspistol_mk2":"0x88374054","heavypistol":"0xD205520E","vintagepistol":"0x83839C4","flaregun":"0x47757124","marksmanpistol":"0xDC4DB296","revolver":"0xC1B3C3D1","revolver_mk2":"0xCB96392F","doubleaction":"0x97EA20B8","raypistol":"0xAF3696A1"},"smg":{"microsmg":"0x13532244","smg":"0x2BE6766B","smg_mk2":"0x78A97CD0","assaultsmg":"0xEFE7E2DF","combatpdw":"0xA3D4D34","machinepistol":"0xDB1AA450","minismg":"0xBD248B55","raycarbine":"0x476BF155"},"shotguns":{"pumpshotgun":"0x1D073A89","pumpshotgun_mk2":"0x555AF99A","sawnoffshotgun":"0x7846A318","assaultshotgun":"0xE284C527","bullpupshotgun":"0x9D61E50F","musket":"0xA89CB99E","heavyshotgun":"0x3AABBBAA","dbshotgun":"0xEF951FBB","autoshotgun":"0x12E82D3D"},"assault_rifles":{"assaultrifle":"0xBFEFFF6D","assaultrifle_mk2":"0x394F415C","carbinerifle":"0x83BF0278","carbinerifle_mk2":"0xFAD1F1C9","advancedrifle":"0xAF113F99","specialcarbine":"0xC0A3098D","specialcarbine_mk2":"0x969C3D67","bullpuprifle":"0x7F229F94","bullpuprifle_mk2":"0x84D6FAFD","compactrifle":"0x624FE830"},"machine_guns":{"mg":"0x9D07F764","combatmg":"0x7FD62962","combatmg_mk2":"0xDBBD7280","gusenberg":"0x61012683"},"sniper_rifles":{"sniperrifle":"0x5FC3C11","heavysniper":"0xC472FE2","heavysniper_mk2":"0xA914799","marksmanrifle":"0xC734385A","marksmanrifle_mk2":"0x6A6C02E0"},"heavy_weapons":{"rpg":"0xB1CA77B1","grenadelauncher":"0xA284510B","grenadelauncher_smoke":"0x4DD2DC56","minigun":"0x42BF8A85","firework":"0x7F7497E5","railgun":"0x6D544C99","hominglauncher":"0x63AB0442","compactlauncher":"0x781FE4A","rayminigun":"0xB62D1F67"},"throwables":{"grenade":"0x93E220BD","bzgas":"0xA0973D5E","smokegrenade":"0xFDBC8A50","flare":"0x497FACC3","molotov":"0x24B17070","stickybomb":"0x2C3731D9","proxmine":"0xAB564B93","snowball":"0x787F0BB","pipebomb":"0xBA45E8B8","ball":"0x23C9F95C"},"misc":{"petrolcan":"0x34A67B97","fireextinguisher":"0x60EC506","parachute":"0xFBAB5776"}}')
-
-
-
-
 local vehiclesCars = {0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20};
-
-
 
 -- Hides TREW UI when it's on Pause Menu
 Citizen.CreateThread(function()
@@ -40,7 +31,7 @@ Citizen.CreateThread(function()
     local isPauseMenu = false
 
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(300)
 
 		if IsPauseMenuActive() then -- ESC Key
 			if not isPauseMenu then
@@ -71,58 +62,40 @@ Citizen.CreateThread(function()
 end)
 
 
-
-
-
-
 -- Date and time update
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(1000)
-		if Config.ui.showDate == true then
-			SendNUIMessage({ action = 'setText', id = 'date', value = trewDate() })
-		end
+	while Config.ui.showDate do
+		Wait(2000)
+		SendNUIMessage({ action = 'setText', id = 'date', value = trewDate() })
 	end
 end)
-
-
-
-
 
 -- Location update
 Citizen.CreateThread(function()
 
-	while true do
-		Citizen.Wait(100)
-
-		local player = GetPlayerPed(-1)
-
+	while Config.ui.showLocation do
+		Citizen.Wait(200)
+		local player = PlayerPedId()
 		local position = GetEntityCoords(player)
+		local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
+		local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
 
-		if Config.ui.showLocation == true then
-			local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
-			local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
+		local locationMessage = nil
 
-			local locationMessage = nil
-
-			if zoneNameFull then 
-				locationMessage = streetName .. ', ' .. zoneNameFull
-			else
-				locationMessage = streetName
-			end
-
-			locationMessage = string.format(
-				Locales[Config.Locale]['you_are_on_location'],
-				locationMessage
-			)
-
-			SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
+		if zoneNameFull then 
+			locationMessage = streetName .. ', ' .. zoneNameFull
+		else
+			locationMessage = streetName
 		end
+
+		locationMessage = string.format(
+			Locales[Config.Locale]['you_are_on_location'],
+			locationMessage
+		)
+
+		SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
 	end
 end)
-
-
-
 
 
 -- Vehicle Info
@@ -135,24 +108,17 @@ local currSpeed = 0.0
 local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 Citizen.CreateThread(function()
-	
 	while true do
-
-		Citizen.Wait(100)
-
-		local player = GetPlayerPed(-1)
+		Wait(200)
+		local player = PlayerPedId()
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)
 		local vehicleIsOn = GetIsVehicleEngineRunning(vehicle)
 		local vehicleInfo
-
 		if IsPedInAnyVehicle(player, false) and vehicleIsOn then
-
-
 			local vehicleClass = GetVehicleClass(vehicle)
 
-
-			if Config.ui.showMinimap == false then
+			if not Config.ui.showMinimap then
 				DisplayRadar(true)
 			end
 
@@ -174,8 +140,6 @@ Citizen.CreateThread(function()
 				vehicleNailSpeed = math.ceil(  280 - math.ceil( math.ceil(vehicleSpeed * 205) / Config.vehicle.maxSpeed) )
 			end
 
-
-			
 			-- Vehicle Fuel and Gear
 			local vehicleFuel
 			vehicleFuel = GetVehicleFuelLevel(vehicle)
@@ -199,11 +163,6 @@ Citizen.CreateThread(function()
 				vehicleIsLightsOn = 'off'
 			end
 
-
-
-
-
-
 			-- Vehicle Siren
 			local vehicleSiren
 
@@ -212,11 +171,6 @@ Citizen.CreateThread(function()
 			else
 				vehicleSiren = false
 			end
-
-
-
-
-
 
 			-- Vehicle Seatbelt
 			if has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8 then
@@ -244,16 +198,10 @@ Citizen.CreateThread(function()
                 	DisableControlAction(0, 75)
 
                 end
-
-
-
 			end
-
-			
 
 			vehicleInfo = {
 				action = 'updateVehicle',
-
 				status = true,
 				speed = vehicleSpeed,
 				nail = vehicleNailSpeed,
@@ -274,8 +222,6 @@ Citizen.CreateThread(function()
 
 			vehicleInfo['seatbelt']['status'] = seatbeltIsOn
 		else
-
-			
 			vehicleCruiser = false
 			vehicleNailSpeed = 0
 			vehicleSignalIndicator = 'off'
@@ -300,11 +246,6 @@ Citizen.CreateThread(function()
 		end
 
 		SendNUIMessage(vehicleInfo)
-
-
-
-
-
 	end
 end)
 
@@ -315,13 +256,13 @@ end)
 Citizen.CreateThread(function()
 
 	while true do
-		Citizen.Wait(1000)
+		Citizen.Wait(5000)
 
 		local playerStatus 
 		local showPlayerStatus = 0
 		playerStatus = { action = 'setStatus', status = {} }
 
-		if Config.ui.showHealth == true then
+		if Config.ui.showHealth then
 			showPlayerStatus = (showPlayerStatus+1)
 
 			playerStatus['isdead'] = false
@@ -336,7 +277,7 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		if Config.ui.showArmor == true then
+		if Config.ui.showArmor then
 			showPlayerStatus = (showPlayerStatus+1)
 
 			playerStatus['status'][showPlayerStatus] = {
@@ -345,7 +286,7 @@ Citizen.CreateThread(function()
 			}
 		end
 
-		if Config.ui.showStamina == true then
+		if Config.ui.showStamina  then
 			showPlayerStatus = (showPlayerStatus+1)
 
 			playerStatus['status'][showPlayerStatus] = {
@@ -354,83 +295,97 @@ Citizen.CreateThread(function()
 			}
 		end
 
-		TriggerServerEvent('trew_hud_ui:getServerInfo')
+		
 
 		if showPlayerStatus > 0 then
 			SendNUIMessage(playerStatus)
 		end
 
-	end
-end)
-
-
--- Overall Info
-RegisterNetEvent('trew_hud_ui:setInfo')
-AddEventHandler('trew_hud_ui:setInfo', function(info)
-
-	SendNUIMessage({ action = 'setText', id = 'job', value = info['job'] })
-	SendNUIMessage({ action = 'setMoney', id = 'wallet', value = info['money'] })
-	SendNUIMessage({ action = 'setMoney', id = 'bank', value = info['bankMoney'] })
-	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = info['blackMoney'] })
-
 	TriggerEvent('esx:getSharedObject', function(obj)
-		ESX = obj
-		ESX.PlayerData = ESX.GetPlayerData()
-	end)
-
-	if ESX.PlayerData.job ~= nil then
-		if ESX.PlayerData.job.grade_name ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
-			if (Config.ui.showSocietyMoney == true) then
-				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
-			end
-			ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
-				SendNUIMessage({ action = 'setMoney', id = 'society', value = money })
-			end, ESX.PlayerData.job.name)
-		else
-			SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })
-		end
-	end
-
-	local playerStatus 
-	local showPlayerStatus = 0
-	playerStatus = { action = 'setStatus', status = {} }
+  		ESX = obj
+  		ESX.PlayerData = ESX.GetPlayerData()
+  	end)
 
 
-	if Config.ui.showHunger == true then
-		showPlayerStatus = (showPlayerStatus+1)
+	if ESX.PlayerData.job then
+  	   local job
+  	   local blackMoney
+  	   local bank
+	   local money
 
-		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
-			playerStatus['status'][showPlayerStatus] = {
-				name = 'hunger',
-				value = math.floor(100-status.getPercent())
-			}
-		end)
-
-	end
-
-	if Config.ui.showThirst == true then
-		showPlayerStatus = (showPlayerStatus+1)
-
-		TriggerEvent('esx_status:getStatus', 'thirst', function(status)
-			playerStatus['status'][showPlayerStatus] = {
-				name = 'thirst',
-				value = math.floor(100-status.getPercent())
-			}
-		end)
-	end
-
-	if showPlayerStatus > 0 then
-		SendNUIMessage(playerStatus)
-	end
+        if ESX.PlayerData.job.label == ESX.PlayerData.job.grade_label then
+          job = ESX.PlayerData.job.grade_label
+        else
+          job = ESX.PlayerData.job.label .. ': ' .. ESX.PlayerData.job.grade_label
+        end
 
 
+        for i=1, #ESX.PlayerData.accounts, 1 do
+          if ESX.PlayerData.accounts[i].name == 'black_money' then
+                blackMoney = ESX.PlayerData.accounts[i].money
+          elseif ESX.PlayerData.accounts[i].name == 'bank' then
+                bank = ESX.PlayerData.accounts[i].money
+             elseif ESX.PlayerData.accounts[i].name == 'money' then
+                money = ESX.PlayerData.accounts[i].money
+          end
+        end
+
+  	SendNUIMessage({ action = 'setText', id = 'job', value = job })
+  	SendNUIMessage({ action = 'setMoney', id = 'wallet', value = money })
+  	SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
+  	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
+
+  		if ESX.PlayerData.job.grade_name ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
+  			if (Config.ui.showSocietyMoney == true) then
+  				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
+  			end
+  			ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
+  				SendNUIMessage({ action = 'setMoney', id = 'society', value = money })
+  			end, ESX.PlayerData.job.name)
+  		else
+  			SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })
+  		end
+  	end
+
+  	local playerStatus 
+  	local showPlayerStatus = 0
+  	playerStatus = { action = 'setStatus', status = {} }
+
+
+  	if Config.ui.showHunger then
+  		showPlayerStatus = (showPlayerStatus+1)
+
+  		TriggerEvent('esx_status:getStatus', 'hunger', function(status)
+  			playerStatus['status'][showPlayerStatus] = {
+  				name = 'hunger',
+  				value = math.floor(100-status.getPercent())
+  			}
+  		end)
+
+  	end
+
+  	if Config.ui.showThirst then
+  		showPlayerStatus = (showPlayerStatus+1)
+
+  		TriggerEvent('esx_status:getStatus', 'thirst', function(status)
+  			playerStatus['status'][showPlayerStatus] = {
+  				name = 'thirst',
+  				value = math.floor(100-status.getPercent())
+  			}
+  		end)
+  	end
+
+  	if showPlayerStatus > 0 then
+  	    SendNUIMessage(playerStatus)
+  	end
+    end
 end)
 
 
 -- Voice detection and distance
 Citizen.CreateThread(function()
 
-	if Config.ui.showVoice == true then
+	if Config.ui.showVoice then
 
 	    RequestAnimDict('facials@gen_male@variations@normal')
 	    RequestAnimDict('mp_facial')
@@ -458,18 +413,12 @@ end)
 
 
 Citizen.CreateThread(function()
-	if Config.ui.showVoice == true then
-
-
-
+	if Config.ui.showVoice then
 		local isTalking = false
 		local voiceDistance = nil
 
 		while true do
 			Citizen.Wait(1)
-
-
-
 
 			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
 				isTalking = not isTalking
@@ -480,9 +429,7 @@ Citizen.CreateThread(function()
 			end
 
 
-
 			if IsControlJustPressed(1, Keys[Config.voice.keys.distance]) then
-
 				Config.voice.levels.current = (Config.voice.levels.current + 1) % 3
 
 				if Config.voice.levels.current == 0 then
@@ -506,23 +453,13 @@ Citizen.CreateThread(function()
 			elseif Config.voice.levels.current == 2 then
 				voiceDistance = 'whisper'
 			end
-
-
 		end
-
-
-
-
-
 	end
 end)
 
-
-
-
 -- Weapons
 Citizen.CreateThread(function()
-	if Config.ui.showWeapons == true then
+	if Config.ui.showWeapons then
 		while true do
 			Citizen.Wait(100)
 
@@ -530,7 +467,6 @@ Citizen.CreateThread(function()
 			local status = {}
 
 			if IsPedArmed(player, 7) then
-
 				local weapon = GetSelectedPedWeapon(player)
 				local ammoTotal = GetAmmoInPedWeapon(player,weapon)
 				local bool,ammoClip = GetAmmoInClip(player,weapon)
@@ -575,25 +511,10 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Everything that neededs to be at WAIT 0
 Citizen.CreateThread(function()
-
 	while true do
 		Citizen.Wait(0)
-
 		local player = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local vehicleClass = GetVehicleClass(vehicle)
@@ -619,10 +540,6 @@ Citizen.CreateThread(function()
 				SetEntityMaxSpeed(vehicle, vehicleSpeedSource)
 			end
 		end
-
-
-
-
 
 		-- Vehicle Signal Lights
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalLeft]) and (has_value(vehiclesCars, vehicleClass) == true) then
@@ -654,27 +571,14 @@ Citizen.CreateThread(function()
 
 			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
 		end
-
-
 	end
 end)
 
-
-
-
-
-
-
-
-
-
 AddEventHandler('esx:onPlayerSpawn', function()
-
 	SendNUIMessage({ action = 'ui', config = Config.ui })
 	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
 	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
-	
-	if Config.ui.showVoice == true then
+	if Config.ui.showVoice then
 		if Config.voice.levels.current == 0 then
 			NetworkSetTalkerProximity(Config.voice.levels.default)
 		elseif Config.voice.levels.current == 1 then
@@ -689,7 +593,6 @@ AddEventHandler('playerSpawned', function()
 	if Config.ui.showVoice == true then
 	    NetworkSetTalkerProximity(5.0)
 	end
-
 	HideHudComponentThisFrame(7) -- Area
 	HideHudComponentThisFrame(9) -- Street
 	HideHudComponentThisFrame(6) -- Vehicle
@@ -697,14 +600,6 @@ AddEventHandler('playerSpawned', function()
 	HideHudComponentThisFrame(4) -- MP Cash
 	HideHudComponentThisFrame(13) -- Cash changes!
 end)
-
-
-
-
-
-
-
-
 
 AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 	local driver = GetVehiclePedIsIn(GetPlayerPed(-1), false)
@@ -735,7 +630,6 @@ AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 	end
 
 	TriggerServerEvent('trew_hud_ui:syncCarLights', status)
-
 	SetVehicleIndicatorLights(driver, 0, leftLight)
 	SetVehicleIndicatorLights(driver, 1, rightLight)
 end)
@@ -744,7 +638,6 @@ end)
 
 RegisterNetEvent('trew_hud_ui:syncCarLights')
 AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
-
 	if GetPlayerFromServerId(driver) ~= PlayerId() then
 		local driver = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(driver)), false)
 
@@ -771,44 +664,20 @@ AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
 	end
 end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function trewDate()
 	local timeString = nil
-
 	local day = _U('day_' .. GetClockDayOfMonth())
 	local weekDay = _U('weekDay_' .. GetClockDayOfWeek())
 	local month = _U('month_' .. GetClockMonth())
 	local day = _U('day_' .. GetClockDayOfMonth())
 	local year = GetClockYear()
-
-
 	local hour = GetClockHours()
 	local minutes = GetClockMinutes()
 	local time = nil
 	local AmPm = ''
 
 
-	if Config.date.AmPm == true then
-
+	if Config.date.AmPm then
 		if hour >= 13 and hour <= 24 then
 			hour = hour - 12
 			AmPm = 'PM'
@@ -874,11 +743,6 @@ function trewDate()
 	return timeString
 end
 
-
-
-
-
-
 function has_value(tab, val)
     for index, value in ipairs(tab) do
         if value == val then
@@ -888,24 +752,6 @@ function has_value(tab, val)
 
     return false
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 local toggleui = false
 RegisterCommand('toggleui', function()
@@ -936,22 +782,10 @@ RegisterCommand('toggleui', function()
 	toggleui = not toggleui
 end)
 
-
-
-
-
-
-
-
-
-
 exports('createStatus', function(args)
 	local statusCreation = { action = 'createStatus', status = args['status'], color = args['color'], icon = args['icon'] }
 	SendNUIMessage(statusCreation)
 end)
-
-
-
 
 exports('setStatus', function(args)
 	local playerStatus = { action = 'setStatus', status = {
