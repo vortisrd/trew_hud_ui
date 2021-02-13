@@ -1,4 +1,4 @@
-TriggerEvent('es:addCommand', 'toggleui', function()
+RegisterCommand('toggleui', function(source, args, user)
 end, { help = _U('toggleui') })
 
 RegisterServerEvent('trew_hud_ui:syncCarLights')
