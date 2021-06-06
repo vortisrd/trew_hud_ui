@@ -17,12 +17,9 @@ local vehiclesCars = {0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20};
 
 -- Hides TREW UI when it's on Pause Menu
 Citizen.CreateThread(function()
-
-    local isPauseMenu = false
-
+	local isPauseMenu = false
 	while true do
 		Citizen.Wait(0)
-
 		if IsPauseMenuActive() then -- ESC Key
 			if not isPauseMenu then
 				isPauseMenu = not isPauseMenu
@@ -33,7 +30,6 @@ Citizen.CreateThread(function()
 				isPauseMenu = not isPauseMenu
 				SendNUIMessage({ action = 'toggleUi', value = true })
 			end
-
 			HideHudComponentThisFrame(1)  -- Wanted Stars
 			HideHudComponentThisFrame(2)  -- Weapon Icon
 			HideHudComponentThisFrame(3)  -- Cash
@@ -46,16 +42,8 @@ Citizen.CreateThread(function()
 			HideHudComponentThisFrame(17) -- Save Game
 			HideHudComponentThisFrame(20) -- Weapon Stats
 		end
-
-
 	end
 end)
-
-
-
-
-
-
 -- Date and time update
 Citizen.CreateThread(function()
 	while true do
@@ -65,45 +53,30 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
-
-
-
-
-
 -- Location update
 Citizen.CreateThread(function()
-
 	while true do
 		Citizen.Wait(100)
-
 		local player = GetPlayerPed(-1)
-
 		local position = GetEntityCoords(player)
-
 		if Config.ui.showLocation == true then
 			local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
 			local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
 
 			local locationMessage = nil
-
 			if zoneNameFull then 
 				locationMessage = streetName .. ', ' .. zoneNameFull
 			else
 				locationMessage = streetName
 			end
-
 			locationMessage = string.format(
 				Locales[Config.Locale]['you_are_on_location'],
 				locationMessage
 			)
-
 			SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
 		end
 	end
 end)
-
-
-
 
 
 -- Vehicle Info
@@ -116,31 +89,21 @@ local currSpeed = 0.0
 local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 Citizen.CreateThread(function()
-	
 	while true do
-
 		Citizen.Wait(100)
-
 		local player = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)
 		local vehicleIsOn = GetIsVehicleEngineRunning(vehicle)
 		local vehicleInfo
-
 		if IsPedInAnyVehicle(player, false) and vehicleIsOn then
-
-
 			local vehicleClass = GetVehicleClass(vehicle)
-
-
 			if Config.ui.showMinimap == false then
 				DisplayRadar(true)
 			end
-
 			-- Vehicle Speed
 			local vehicleSpeedSource = GetEntitySpeed(vehicle)
 			local vehicleSpeed
-
 			if (ShouldUseMetricMeasurements()) then
 				-- Speed set to MPH
 				Config.vehicle.speedUnit = "MPH"
@@ -164,8 +127,6 @@ Citizen.CreateThread(function()
 				vehicleNailSpeed = math.ceil(  280 - math.ceil( math.ceil(vehicleSpeed * 205) / Config.vehicle.maxSpeed) )
 			end
 
-
-			
 			-- Vehicle Fuel and Gear
 			local vehicleFuel
 			vehicleFuel = GetVehicleFuelLevel(vehicle)
@@ -189,11 +150,6 @@ Citizen.CreateThread(function()
 				vehicleIsLightsOn = 'off'
 			end
 
-
-
-
-
-
 			-- Vehicle Siren
 			local vehicleSiren
 
@@ -202,48 +158,30 @@ Citizen.CreateThread(function()
 			else
 				vehicleSiren = false
 			end
-
-
-
-
-
-
 			-- Vehicle Seatbelt
 			if has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8 then
-
 				local prevSpeed = currSpeed
-                currSpeed = vehicleSpeedSource
-
-                SetPedConfigFlag(PlayerPedId(), 32, true)
-
-                if not seatbeltIsOn then
-                	local vehIsMovingFwd = GetEntitySpeedVector(vehicle, true).y > 1.0
-                    local vehAcc = (prevSpeed - currSpeed) / GetFrameTime()
-                    if (vehIsMovingFwd and (prevSpeed > (seatbeltEjectSpeed/2.237)) and (vehAcc > (seatbeltEjectAccel*9.81))) then
-
-                        SetEntityCoords(player, position.x, position.y, position.z - 0.47, true, true, true)
-                        SetEntityVelocity(player, prevVelocity.x, prevVelocity.y, prevVelocity.z)
-                        SetPedToRagdoll(player, 1000, 1000, 0, 0, 0, 0)
-                    else
-                        -- Update previous velocity for ejecting player
-                        prevVelocity = GetEntityVelocity(vehicle)
-                    end
-
-                else
-
-                	DisableControlAction(0, 75)
-
-                end
-
-
-
-			end
-
+				currSpeed = vehicleSpeedSource
+				SetPedConfigFlag(PlayerPedId(), 32, true)
+				if not seatbeltIsOn then
+					local vehIsMovingFwd = GetEntitySpeedVector(vehicle, true).y > 1.0
+					local vehAcc = (prevSpeed - currSpeed) / GetFrameTime()
+					if (vehIsMovingFwd and (prevSpeed > (seatbeltEjectSpeed/2.237)) and (vehAcc > (seatbeltEjectAccel*9.81))) then
 			
-
+						SetEntityCoords(player, position.x, position.y, position.z - 0.47, true, true, true)
+						SetEntityVelocity(player, prevVelocity.x, prevVelocity.y, prevVelocity.z)
+						SetPedToRagdoll(player, 1000, 1000, 0, 0, 0, 0)
+					else
+						-- Update previous velocity for ejecting player
+						prevVelocity = GetEntityVelocity(vehicle)
+					end
+			
+				else
+					DisableControlAction(0, 75)
+				end
+			end
 			vehicleInfo = {
 				action = 'updateVehicle',
-
 				status = true,
 				speed = vehicleSpeed,
 				nail = vehicleNailSpeed,
@@ -255,26 +193,19 @@ Citizen.CreateThread(function()
 				type = vehicleClass,
 				siren = vehicleSiren,
 				seatbelt = {},
-
 				config = {
 					speedUnit = Config.vehicle.speedUnit,
 					maxSpeed = Config.vehicle.maxSpeed
 				}
 			}
-
 			vehicleInfo['seatbelt']['status'] = seatbeltIsOn
 		else
-
-			
 			vehicleCruiser = false
 			vehicleNailSpeed = 0
 			vehicleSignalIndicator = 'off'
-
-            seatbeltIsOn = false
-
+			seatbeltIsOn = false
 			vehicleInfo = {
 				action = 'updateVehicle',
-
 				status = false,
 				nail = vehicleNailSpeed,
 				seatbelt = { status = seatbeltIsOn },
@@ -282,77 +213,53 @@ Citizen.CreateThread(function()
 				signals = vehicleSignalIndicator,
 				type = 0,
 			}
-
 			if Config.ui.showMinimap == false then
 				DisplayRadar(false)
 			end
-
 		end
 
 		SendNUIMessage(vehicleInfo)
-
-
-
-
-
 	end
 end)
 
-
-
-
 -- Player status
 Citizen.CreateThread(function()
-
 	while true do
 		Citizen.Wait(1000)
-
 		local playerStatus 
 		local showPlayerStatus = 0
 		playerStatus = { action = 'setStatus', status = {} }
-
 		if Config.ui.showHealth == true then
-			showPlayerStatus = (showPlayerStatus+1)
-
+			showPlayerStatus = (showPlayerStatus + 1)
 			playerStatus['isdead'] = false
-
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'health',
 				value = GetEntityHealth(GetPlayerPed(-1)) - 100
 			}
-
 			if IsEntityDead(GetPlayerPed(-1)) then
 				playerStatus.isdead = true
 			end
 		end
-
 		if Config.ui.showArmor == true then
 			showPlayerStatus = (showPlayerStatus+1)
-
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'armor',
 				value = GetPedArmour(GetPlayerPed(-1)),
 			}
 		end
-
 		if Config.ui.showStamina == true then
 			showPlayerStatus = (showPlayerStatus+1)
-
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'stamina',
 				value = 100 - GetPlayerSprintStaminaRemaining(PlayerId()),
 			}
 		end
-
 		TriggerServerEvent('trew_hud_ui:getServerInfo')
-
 		if showPlayerStatus > 0 then
 			SendNUIMessage(playerStatus)
 		end
-
 	end
 end)
-
 
 -- Overall Info
 RegisterNetEvent('trew_hud_ui:setInfo')
@@ -366,21 +273,16 @@ AddEventHandler('trew_hud_ui:setInfo', function(info)
 	local playerStatus 
 	local showPlayerStatus = 0
 	playerStatus = { action = 'setStatus', status = {} }
-
-
 	if Config.ui.showHunger == true then
 		showPlayerStatus = (showPlayerStatus+1)
-
 		playerStatus['status'][showPlayerStatus] = {
 			name = 'hunger',
 			value = info['hunger']
 		}
-
 	end
 
 	if Config.ui.showThirst == true then
 		showPlayerStatus = (showPlayerStatus+1)
-
 		playerStatus['status'][showPlayerStatus] = {
 			name = 'thirst',
 			value = info['thirst']
@@ -390,55 +292,36 @@ AddEventHandler('trew_hud_ui:setInfo', function(info)
 	if showPlayerStatus > 0 then
 		SendNUIMessage(playerStatus)
 	end
-
-
 end)
-
 
 -- Voice detection and distance
 Citizen.CreateThread(function()
-
 	if Config.ui.showVoice == true then
-
-	    RequestAnimDict('facials@gen_male@variations@normal')
-	    RequestAnimDict('mp_facial')
-
-	    while true do
-	        Citizen.Wait(300)
-	        local playerID = PlayerId()
-
-	        for _,player in ipairs(GetActivePlayers()) do
-	            local boolTalking = NetworkIsPlayerTalking(player)
-
-	            if player ~= playerID then
-	                if boolTalking then
-	                    PlayFacialAnim(GetPlayerPed(player), 'mic_chatter', 'mp_facial')
-	                elseif not boolTalking then
-	                    PlayFacialAnim(GetPlayerPed(player), 'mood_normal_1', 'facials@gen_male@variations@normal')
-	                end
-	            end
-	        end
-	    end
-
+		RequestAnimDict('facials@gen_male@variations@normal')
+		RequestAnimDict('mp_facial')
+		while true do
+			Citizen.Wait(300)
+			local playerID = PlayerId()
+			for _,player in ipairs(GetActivePlayers()) do
+				local boolTalking = NetworkIsPlayerTalking(player)
+				if player ~= playerID then
+					if boolTalking then
+						PlayFacialAnim(GetPlayerPed(player), 'mic_chatter', 'mp_facial')
+					elseif not boolTalking then
+						PlayFacialAnim(GetPlayerPed(player), 'mood_normal_1', 'facials@gen_male@variations@normal')
+					end
+				end
+			end
+		end
 	end
 end)
 
-
-
 Citizen.CreateThread(function()
 	if Config.ui.showVoice == true then
-
-
-
 		local isTalking = false
 		local voiceDistance = nil
-
 		while true do
 			Citizen.Wait(1)
-
-
-
-
 			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
 				isTalking = not isTalking
 				SendNUIMessage({ action = 'isTalking', value = isTalking })
@@ -447,12 +330,8 @@ Citizen.CreateThread(function()
 				SendNUIMessage({ action = 'isTalking', value = isTalking })
 			end
 
-
-
 			if IsControlJustPressed(1, Keys[Config.voice.keys.distance]) then
-
 				Config.voice.levels.current = (Config.voice.levels.current + 1) % 3
-
 				if Config.voice.levels.current == 0 then
 					NetworkSetTalkerProximity(Config.voice.levels.default)
 					voiceDistance = 'normal'
@@ -474,45 +353,27 @@ Citizen.CreateThread(function()
 			elseif Config.voice.levels.current == 2 then
 				voiceDistance = 'whisper'
 			end
-
-
 		end
-
-
-
-
-
 	end
 end)
-
-
-
 
 -- Weapons
 Citizen.CreateThread(function()
 	if Config.ui.showWeapons == true then
 		while true do
 			Citizen.Wait(100)
-
 			local player = GetPlayerPed(-1)
 			local status = {}
-
 			if IsPedArmed(player, 7) then
-
 				local weapon = GetSelectedPedWeapon(player)
 				local ammoTotal = GetAmmoInPedWeapon(player,weapon)
 				local bool,ammoClip = GetAmmoInClip(player,weapon)
 				local ammoRemaining = math.floor(ammoTotal - ammoClip)
-				
 				status['armed'] = true
-
 				for key,value in pairs(AllWeapons) do
-
 					for keyTwo,valueTwo in pairs(AllWeapons[key]) do
 						if weapon == GetHashKey('weapon_'..keyTwo) then
 							status['weapon'] = keyTwo
-
-
 							if key == 'melee' then
 								SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
 								SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
@@ -525,71 +386,43 @@ Citizen.CreateThread(function()
 									SendNUIMessage({ action = 'element', task = 'enable', value = 'bullets' })
 								end
 							end
-
 						end
 					end
-
 				end
-
 				SendNUIMessage({ action = 'setText', id = 'weapon_clip', value = ammoClip })
 				SendNUIMessage({ action = 'setText', id = 'weapon_ammo', value = ammoRemaining })
-
 			else
 				status['armed'] = false	
 			end
-
 			SendNUIMessage({ action = 'updateWeapon', status = status })
-
 		end
 	end
 end)
 
-
-
-
-
-
-
-
-
-
-
 -- Everything that neededs to be at WAIT 0
 Citizen.CreateThread(function()
-
 	while true do
 		Citizen.Wait(0)
-
 		local player = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local vehicleClass = GetVehicleClass(vehicle)
-
 		-- Vehicle Seatbelt
 		if IsPedInAnyVehicle(player, false) and GetIsVehicleEngineRunning(vehicle) then
 			if IsControlJustReleased(0, Keys[Config.vehicle.keys.seatbelt]) and (has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8) then
 				seatbeltIsOn = not seatbeltIsOn
 			end
 		end
-
 		-- Vehicle Cruiser
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.cruiser]) and GetPedInVehicleSeat(vehicle, -1) == player and (has_value(vehiclesCars, vehicleClass) == true) then
-			
 			local vehicleSpeedSource = GetEntitySpeed(vehicle)
-
 			if vehicleCruiser == 'on' then
 				vehicleCruiser = 'off'
 				SetEntityMaxSpeed(vehicle, GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
-				
 			else
 				vehicleCruiser = 'on'
 				SetEntityMaxSpeed(vehicle, vehicleSpeedSource)
 			end
 		end
-
-
-
-
-
 		-- Vehicle Signal Lights
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalLeft]) and (has_value(vehiclesCars, vehicleClass) == true) then
 			if vehicleSignalIndicator == 'off' then
@@ -597,45 +430,28 @@ Citizen.CreateThread(function()
 			else
 				vehicleSignalIndicator = 'off'
 			end
-
 			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
 		end
-
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalRight]) and (has_value(vehiclesCars, vehicleClass) == true) then
 			if vehicleSignalIndicator == 'off' then
 				vehicleSignalIndicator = 'right'
 			else
 				vehicleSignalIndicator = 'off'
 			end
-
 			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
 		end
-
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalBoth]) and (has_value(vehiclesCars, vehicleClass) == true) then
 			if vehicleSignalIndicator == 'off' then
 				vehicleSignalIndicator = 'both'
 			else
 				vehicleSignalIndicator = 'off'
 			end
-
 			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
 		end
-
-
 	end
 end)
 
-
-
-
-
-
-
-
-
-
 AddEventHandler('onClientMapStart', function()
-
 	SendNUIMessage({ action = 'ui', config = Config.ui })
 	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
 	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
@@ -653,10 +469,8 @@ end)
 
 AddEventHandler('playerSpawned', function()
 	if Config.ui.showVoice == true then
-	    NetworkSetTalkerProximity(5.0)
+		NetworkSetTalkerProximity(5.0)
 	end
-
-
 	HideHudComponentThisFrame(7) -- Area
 	HideHudComponentThisFrame(9) -- Street
 	HideHudComponentThisFrame(6) -- Vehicle
@@ -666,19 +480,11 @@ AddEventHandler('playerSpawned', function()
 end)
 
 
-
-
-
-
-
-
-
 AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 	local driver = GetVehiclePedIsIn(GetPlayerPed(-1), false)
 	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver,vehicleTrailer)
 	local leftLight
 	local rightLight
-
 	if status == 'left' then
 		leftLight = false
 		rightLight = true
@@ -698,11 +504,8 @@ AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 		leftLight = false
 		rightLight = false
 		if hasTrailer then driver = vehicleTrailer end
-
 	end
-
 	TriggerServerEvent('trew_hud_ui:syncCarLights', status)
-
 	SetVehicleIndicatorLights(driver, 0, leftLight)
 	SetVehicleIndicatorLights(driver, 1, rightLight)
 end)
@@ -711,7 +514,6 @@ end)
 
 RegisterNetEvent('trew_hud_ui:syncCarLights')
 AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
-
 	if GetPlayerFromServerId(driver) ~= PlayerId() then
 		local driver = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(driver)), false)
 
@@ -738,26 +540,6 @@ AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
 	end
 end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function trewDate()
 	local timeString = nil
 
@@ -766,16 +548,12 @@ function trewDate()
 	local month = _U('month_' .. GetClockMonth())
 	local day = _U('day_' .. GetClockDayOfMonth())
 	local year = GetClockYear()
-
-
 	local hour = GetClockHours()
 	local minutes = GetClockMinutes()
 	local time = nil
 	local AmPm = ''
 
-
 	if Config.date.AmPm == true then
-
 		if hour >= 13 and hour <= 24 then
 			hour = hour - 12
 			AmPm = 'PM'
@@ -785,7 +563,6 @@ function trewDate()
 			end
 			AmPm = 'AM'
 		end
-
 	end
 
 	if hour <= 9 then
@@ -794,14 +571,8 @@ function trewDate()
 	if minutes <= 9 then
 		minutes = '0' .. minutes
 	end
-
 	time = hour .. ':' .. minutes .. ' ' .. AmPm
-
-
-
-
 	local date_format = Locales[Config.Locale]['date_format'][Config.date.format]
-
 	if Config.date.format == 'default' then
 		timeString = string.format(
 			date_format,
@@ -812,7 +583,6 @@ function trewDate()
 			date_format,
 			day, month
 		)
-
 	elseif Config.date.format == 'simpleWithHours' then
 		timeString = string.format(
 			date_format,
@@ -834,44 +604,18 @@ function trewDate()
 			time, weekDay, day, month, year
 		)
 	end
-
-
-	
-
 	return timeString
 end
 
-
-
-
-
-
 function has_value(tab, val)
-    for index, value in ipairs(tab) do
-        if value == val then
-            return true
-        end
-    end
-
-    return false
+	for index, value in ipairs(tab) do
+		if value == val then
+			return true
+		end
+	end
+	
+	return false
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 local toggleui = false
 RegisterCommand('toggleui', function()
@@ -903,13 +647,10 @@ RegisterCommand('toggleui', function()
 	toggleui = not toggleui
 end)
 
-
 exports('createStatus', function(args)
 	local statusCreation = { action = 'createStatus', status = args['status'], color = args['color'], icon = args['icon'] }
 	SendNUIMessage(statusCreation)
 end)
-
-
 
 
 exports('setStatus', function(args)

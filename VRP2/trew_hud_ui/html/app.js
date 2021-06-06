@@ -1,11 +1,11 @@
 function rgba(hex,opacity){
-    hex = hex.replace('#','');
-    redColor = parseInt(hex.substring(0,2), 16);
-    greenColor = parseInt(hex.substring(2,4), 16);
-    blueColor = parseInt(hex.substring(4,6), 16);
-
-    result = 'rgba('+redColor+','+greenColor+','+blueColor+','+opacity/100+')';
-    return result;
+	hex = hex.replace('#','');
+	redColor = parseInt(hex.substring(0,2), 16);
+	greenColor = parseInt(hex.substring(2,4), 16);
+	blueColor = parseInt(hex.substring(4,6), 16);
+	
+	result = 'rgba('+redColor+','+greenColor+','+blueColor+','+opacity/100+')';
+	return result;
 }
 
 var loadJS = function(url, implementationCode, location) {
@@ -17,8 +17,6 @@ var loadJS = function(url, implementationCode, location) {
 
 	location.appendChild(scriptTag);
 };
-
-
 
 function ajaxio(method,url,type=null,data=null) {
 	return new Promise((resolve, reject) => {
@@ -56,9 +54,7 @@ Object.prototype.addMultiListener = function(eventNames, listener) {
 	}
 }
 
-
 window.onload = function () {
-
 		var eventCallback = {
 			ui: function(data) {
 				var config = data.config;
@@ -108,13 +104,11 @@ window.onload = function () {
 				eventCallback['setText'](data);
 			},
 
-
 			isTalking: function(data) {
 				var voiceId = document.querySelector('#voice');
 				if (data.value) { voiceId.classList.add('speak'); }
 				else { voiceId.classList.remove('speak'); }
 			},
-
 
 			setVoiceDistance: function(data) {
 				var voiceId = document.querySelector('#voice');
@@ -124,32 +118,23 @@ window.onload = function () {
 				voiceIdWithClasses.add(data.value);
 			},
 
-
 			createStatus: function(data) {
-
 				var motherStatus = document.querySelector('div#status ul');
-
 				var statusID = data.status;
 				var statusPrimaryColor = rgba(data.color,100);
 				var statusSecondaryColor = rgba(data.color,75);
 				var statusIcon = data.icon + '<span style="background: linear-gradient(0deg, '+statusSecondaryColor+' 0%, '+statusPrimaryColor+' 100%);"></span>';
-
-
 				if (document.getElementById(statusID)) { }
 				else {
 					var newStatus = document.createElement('li');
 					newStatus.classList.add('icon', 'customstatus');
 					newStatus.id = statusID;
-
 					motherStatus.insertBefore(newStatus, motherStatus.firstChild);
-
 					saferInnerHTML(document.getElementById(statusID), statusIcon);
 				}
 			},
 
-
 			setStatus: function(data) {
-
 				if (data.isdead == true) {
 					if (document.querySelector('#health').classList.contains('dead') == false) {
 						document.querySelector('#health').classList.add('dead');
@@ -177,7 +162,6 @@ window.onload = function () {
 				}
 			},
 
-
 			updateWeapon: function(data) {
 				var weaponContainer = document.querySelector('#weapon');
 				var bulletsContainer = document.querySelector('#bullets');
@@ -204,13 +188,7 @@ window.onload = function () {
 				}
 			},
 
-
-
-
-
-
 			updateVehicle: function(data) {
-
 				var vehicleInfo = document.querySelector('.info.vehicle');
 				var vehicleSeatbelt = document.querySelector('#seatbelt');
 				var vehicleLights = document.querySelector('#lights');
@@ -218,10 +196,8 @@ window.onload = function () {
 				var vehicleFuel = document.querySelector('#fuel');
 				var vehicleCruiser = document.querySelector('#vehicle-speed strong');
 				var vehiclesCars = [0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20];
-
 				if (data.status == true) {
 					if (vehicleInfo.classList.contains('inactive')) {
-
 						vehicleSeatbelt.style.display = 'none';
 						vehicleLights.style.display = 'none';
 						vehicleSignals.style.display = 'none';
@@ -238,49 +214,35 @@ window.onload = function () {
 							
 							document.querySelector('#vehicle-gear').style.display = 'block';
 						}
-
 						else {
 							document.querySelector('#vehicle-others').style.display = 'block';
 							document.querySelector('#vehicle-gear').style.display = 'none';
 							document.querySelector('#vehicle-others i').classList.remove('fa-biking', 'fa-helicopter', 'fa-ship');
-
 							if (data.type == 13) { document.querySelector('#vehicle-others i').classList.add('fa-biking'); } 
 							else if (data.type == 14) { document.querySelector('#vehicle-others i').classList.add('fa-ship'); } 
 							else if (data.type == 15) { document.querySelector('#vehicle-others i').classList.add('fa-helicopter'); }
 							else if (data.type == 16) { document.querySelector('#vehicle-others i').classList.add('fa-plane'); } 
 							else if (data.type == 21) { document.querySelector('#vehicle-others i').classList.add('fa-train'); } 
 						}
-
 						vehicleInfo.classList.remove('inactive');
 						vehicleInfo.classList.add('active', 'fadeIn');
 					}
-
 					if (vehicleInfo.classList.contains('updated') == false) {
 
 						var vehicleSpeedUnit = data.config.speedUnit.slice(0,2)+'/'+data.config.speedUnit.slice(-1);
 						var vehicleAverageSpeed = Math.ceil(data.config.maxSpeed / 6);
-
 						vehicleInfo.classList.add('updated');
 						saferInnerHTML(vehicleCruiser,vehicleSpeedUnit);
-
 					}
-
-
-
 
 					var previousGear = document.querySelector('#vehicle-gear span').innerHTML;
 					var currentGear = data.gear;
 					if (previousGear != currentGear) { document.querySelector('#vehicle-gear').classList.add('pulse') }
+
 					saferInnerHTML(document.querySelector('#vehicle-gear span'), data.gear);
-
-
-
-
-
-
 					var speedometerCircle = document.querySelector('#progress-speed svg circle.speed');
 					var speedPercentage = Math.floor(Math.floor(data.speed*100)/data.config.maxSpeed);
-					
+
 					speedometerCircle.classList.remove('zero');
 					speedometerCircle.classList.remove('twentyfive');
 					speedometerCircle.classList.remove('fifty');
@@ -294,13 +256,6 @@ window.onload = function () {
 					document.querySelector('#progress-speed svg circle.speed').style.strokeDashoffset = data.nail;
 					saferInnerHTML(document.querySelector('#vehicle-speed span'), data.speed);
 
-
-
-
-
-
-
-
 					if ( (data.seatbelt.status == true) && (vehicleSeatbelt.classList.contains('on') == false) ) {
 						vehicleSeatbelt.classList.remove('off');
 						vehicleSeatbelt.classList.add('on');
@@ -310,113 +265,56 @@ window.onload = function () {
 					else if ( (data.seatbelt.status == false) && (vehicleSeatbelt.classList.contains('off') == false) ) {
 						vehicleSeatbelt.classList.remove('on');
 						vehicleSeatbelt.classList.add('off');
-
 						eventCallback.sound('sounds/seatbelt-unbuckle.ogg', { volume: '0.50' });
 					}
-
-
-
-
-
-
-
-
-
 
 					if (vehicleCruiser.classList.contains(data.cruiser) == false) {
 						vehicleCruiser.classList.remove('on','off');
 						vehicleCruiser.classList.add(data.cruiser);
 					}
-
-
-
-
 					if (data.siren == true) { document.querySelector('#vehicle-gear').classList.add('pulsing'); }
 					else { document.querySelector('#vehicle-gear').classList.remove('pulsing'); }
-
-
-
-
-
 
 					if (vehicleLights.classList.contains(data.lights) == false) {
 						vehicleLights.classList.remove('normal','high','off');
 						vehicleLights.classList.add(data.lights);
-
 						if (data.lights == 'high') { vehicleLights.querySelector('i img').src = 'img/vehicle-lights-high.png'; }
 						else { vehicleLights.querySelector('i img').src = 'img/vehicle-lights.png'; }
 					}
-
-
-
-
-
-
-
-
-
-
 					if (vehicleSignals.classList.contains(data.signals) == false) {
-
 						vehicleSignals.querySelector('i').className = 'fa fa-arrows-alt-h';
 						vehicleSignals.classList.remove('left','right','both','off');
-
 						if ( (data.signals == 'left') || (data.signals == 'right') || (data.signals == 'both') ) {
-
 							var classSignal = 'fa-long-arrow-alt-'+data.signals;
 							if (data.signals == 'both') { classSignal = 'fa-arrows-alt-h'; }
-
 							vehicleSignals.querySelector('i').classList.add('fas',classSignal);
 							vehicleSignals.classList.add(data.signals, 'dying');
-
 							eventCallback.sound('sounds/car-indicators.ogg', { loop: 'loop' });
 						}
-
 						else if (data.signals == 'off') {
 							vehicleSignals.querySelector('i').classList.add('fas','fa-arrows-alt-h');
 							vehicleSignals.classList.remove('dying');
 							vehicleSignals.classList.add(data.signals);
-
 							eventCallback.sound();
 						}
-
-
 					}
-					
-					
-
-
-
-
-
-
-
-
-
-
 					vehicleFuel.querySelector('span').style.height = data.fuel+'%';
-
 					if (data.fuel <= 35) {
 						if (vehicleFuel.classList.contains('dying') == false) { vehicleFuel.classList.add('dying');	}
 					}
 					else { vehicleFuel.classList.remove('dying'); }
-
 				}
 				else {
 					if (vehicleInfo.classList.contains('active')) {
 						vehicleSeatbelt.classList.remove('on');
 						vehicleCruiser.classList.remove('on');
-
 						vehicleInfo.classList.remove('active');
 						vehicleInfo.classList.add('inactive', 'fadeOut');
-
 						eventCallback.sound();
 					}
-
 				}
 				
 			},
-			
 			toggleUi: function(data) {
 				var uiID = document.querySelector('#ui');
 				if (data.value == true) {
@@ -426,7 +324,6 @@ window.onload = function () {
 					uiID.style.display = 'none';
 				}
 			},
-
 			sound: function(file = null, args = null) {
 				var sound = document.querySelector('#sounds');
 				var soundFile = file;
@@ -435,7 +332,6 @@ window.onload = function () {
 				for (i = 0; i < sound.attributes.length; i++) { 
 					if (sound.attributes[i].name != 'id') { sound.removeAttribute(sound.attributes[i].name); }
 				}
-
 				if (soundFile == null) { sound.setAttribute('src', ''); }
 				else {
 					if (args == null) { }
@@ -447,50 +343,18 @@ window.onload = function () {
 							}
 						}
 					}
-
 					sound.setAttribute('src', soundFile);
 					sound.play();
 				}
-
-
 			},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
-
-
-
-
-
-
-
-
 		};
-
+		
 		document.querySelectorAll('.icon i').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () { this.parentElement.classList.remove('pulse'); this.parentElement.classList.remove('shooting'); });
 
 		document.querySelectorAll('.info.vehicle').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
 			this.classList.remove('fadeOut', 'fadeIn');
 		});
-
-
-
 		window.addEventListener('message', function(event) {
 			eventCallback[event.data.action](event.data);
 		});
-
 }
