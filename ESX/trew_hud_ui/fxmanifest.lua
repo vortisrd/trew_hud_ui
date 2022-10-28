@@ -119,6 +119,8 @@ files {
 	'html/sounds/car-indicators.ogg',
 }
 
+shared_script '@es_extended/imports.lua'
+
 client_scripts {
 	'@es_extended/locale.lua',
 	'locales/br.lua',
