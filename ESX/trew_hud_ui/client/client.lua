@@ -1,7 +1,6 @@
-ESX = nil
+ESX = exports["es_extended"]:getSharedObject()
 
 CreateThread(function()
-	while ESX == nil do TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) Wait(0) end
 	while ESX.GetPlayerData().job == nil do Wait(100) end
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
@@ -301,8 +300,6 @@ Citizen.CreateThread(function()
 			SendNUIMessage(playerStatus)
 		end
 
-	TriggerEvent('esx:getSharedObject', function(obj)
-  		ESX = obj
   		ESX.PlayerData = ESX.GetPlayerData()
   	end)
 
