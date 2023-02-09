@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Trew HUD UI'
 
-version '1.3.0'
+version '2.0.0'
 
 ui_page 'html/ui.html'
 
@@ -119,24 +119,19 @@ files {
 	'html/sounds/car-indicators.ogg',
 }
 
-client_scripts {
+shared_scripts {
+	'@es_extended/imports.lua',
 	'@es_extended/locale.lua',
-	'locales/br.lua',
-	'locales/en.lua',
-	'locales/es.lua',
+	'locales/*.lua',
 	'config.lua',
+}
+
+client_scripts {
 	'client/client.lua',
-	'client/hansolo.lua'
 }
 
 server_scripts {
-	'@es_extended/locale.lua',
-	'locales/br.lua',
-	'locales/en.lua',
-	'locales/es.lua',
-	'config.lua',
 	'server/server.lua',
-	'server/milleniumfalcon.lua'
 }
 
 dependencies {
