@@ -5,6 +5,7 @@ game 'gta5'
 description 'Trew HUD UI'
 
 version '2.0.0'
+lua54 'yes'
 
 ui_page 'html/ui.html'
 

@@ -213,10 +213,6 @@ CreateThread(function()
 	end
 end)
 
-
-
-
--- Player status
 CreateThread(function()
 
 	while true do
@@ -406,7 +402,7 @@ CreateThread(function()
 				for key,value in pairs(AllWeapons) do
 
 					for keyTwo,valueTwo in pairs(AllWeapons[key]) do
-						if weapon == GetHashKey('weapon_'..keyTwo) then
+						if weapon == joaat('weapon_'..keyTwo) then
 							status['weapon'] = keyTwo
 
 
