@@ -189,7 +189,6 @@ CreateThread(function()
 		SendNUIMessage(vehicleInfo)
 	
 		if Config.ui.showLocation then
-			Sleep = 200
 			local player = ESX.PlayerData.ped
 			local position = GetEntityCoords(player)
 			local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
