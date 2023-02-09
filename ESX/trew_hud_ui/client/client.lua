@@ -36,8 +36,6 @@ CreateThread(function()
 			HideHudComponentThisFrame(17) -- Save Game
 			HideHudComponentThisFrame(20) -- Weapon Stats
 		end
-
-
 	end
 end)
 
@@ -245,16 +243,13 @@ CreateThread(function()
 		if Config.ui.showHealth then
 			showPlayerStatus = (showPlayerStatus+1)
 
-			playerStatus['isdead'] = false
+			playerStatus.isdead = ESX.PlayerData.dead
 
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'health',
-				value = GetEntityHealth(GetPlayerPed(-1)) - 100
+				value = GetEntityHealth(ESX.PlayerData.ped) - 100
 			}
 
-			if IsEntityDead(GetPlayerPed(-1)) then
-				playerStatus.isdead = true
-			end
 		end
 
 		if Config.ui.showArmor then
@@ -262,7 +257,7 @@ CreateThread(function()
 
 			playerStatus['status'][showPlayerStatus] = {
 				name = 'armor',
-				value = GetPedArmour(GetPlayerPed(-1)),
+				value = GetPedArmour(ESX.PlayerData.ped),
 			}
 		end
 
@@ -280,12 +275,6 @@ CreateThread(function()
 		if showPlayerStatus > 0 then
 			SendNUIMessage(playerStatus)
 		end
-
-	TriggerEvent('esx:getSharedObject', function(obj)
-  		ESX = obj
-  		ESX.PlayerData = ESX.GetPlayerData()
-  	end)
-
 
 	if ESX.PlayerData.job then
   	   local job
@@ -315,7 +304,7 @@ CreateThread(function()
   	SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
   	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
 
-  		if ESX.PlayerData.job.grade_name ~= nil and ESX.PlayerData.job.grade_name == 'boss' then
+  		if ESX.PlayerData.job.grade_name and ESX.PlayerData.job.grade_name == 'boss' then
   			if (Config.ui.showSocietyMoney == true) then
   				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
   			end
@@ -443,7 +432,7 @@ CreateThread(function()
 		while true do
 			Wait(100)
 
-			local player = GetPlayerPed(-1)
+			local player = ESX.PlayerData.ped
 			local status = {}
 
 			if IsPedArmed(player, 7) then
@@ -495,7 +484,7 @@ end)
 CreateThread(function()
 	while true do
 		Wait(0)
-		local player = GetPlayerPed(-1)
+		local player = ESX.PlayerData.ped
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local vehicleClass = GetVehicleClass(vehicle)
 
@@ -582,7 +571,7 @@ AddEventHandler('playerSpawned', function()
 end)
 
 AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
-	local driver = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+	local driver = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
 	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver,vehicleTrailer)
 	local leftLight
 	local rightLight
