@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Locale = 'br'
+Config.Locale = 'en'
 
 Config.serverLogo = 'https://i.imgur.com/AcgDL9f.png'
 
