@@ -1,4 +1,4 @@
-local zones = { ['AIRP'] = "Los Santos International Airport", ['ALAMO'] = "Alamo Sea", ['ALTA'] = "Alta", ['ARMYB'] = "Fort Zancudo", ['BANHAMC'] = "Banham Canyon Dr", ['BANNING'] = "Banning", ['BEACH'] = "Vespucci Beach", ['BHAMCA'] = "Banham Canyon", ['BRADP'] = "Braddock Pass", ['BRADT'] = "Braddock Tunnel", ['BURTON'] = "Burton", ['CALAFB'] = "Calafia Bridge", ['CANNY'] = "Raton Canyon", ['CCREAK'] = "Cassidy Creek", ['CHAMH'] = "Chamberlain Hills", ['CHIL'] = "Vinewood Hills", ['CHU'] = "Chumash", ['CMSW'] = "Chiliad Mountain State Wilderness", ['CYPRE'] = "Cypress Flats", ['DAVIS'] = "Davis", ['DELBE'] = "Del Perro Beach", ['DELPE'] = "Del Perro", ['DELSOL'] = "La Puerta", ['DESRT'] = "Grand Senora Desert", ['DOWNT'] = "Downtown", ['DTVINE'] = "Downtown Vinewood", ['EAST_V'] = "East Vinewood", ['EBURO'] = "El Burro Heights", ['ELGORL'] = "El Gordo Lighthouse", ['ELYSIAN'] = "Elysian Island", ['GALFISH'] = "Galilee", ['GOLF'] = "GWC and Golfing Society", ['GRAPES'] = "Grapeseed", ['GREATC'] = "Great Chaparral", ['HARMO'] = "Harmony", ['HAWICK'] = "Hawick", ['HORS'] = "Vinewood Racetrack", ['HUMLAB'] = "Humane Labs and Research", ['JAIL'] = "Bolingbroke Penitentiary", ['KOREAT'] = "Little Seoul", ['LACT'] = "Land Act Reservoir", ['LAGO'] = "Lago Zancudo", ['LDAM'] = "Land Act Dam", ['LEGSQU'] = "Legion Square", ['LMESA'] = "La Mesa", ['LOSPUER'] = "La Puerta", ['MIRR'] = "Mirror Park", ['MORN'] = "Morningwood", ['MOVIE'] = "Richards Majestic", ['MTCHIL'] = "Mount Chiliad", ['MTGORDO'] = "Mount Gordo", ['MTJOSE'] = "Mount Josiah", ['MURRI'] = "Murrieta Heights", ['NCHU'] = "North Chumash", ['NOOSE'] = "N.O.O.S.E", ['OCEANA'] = "Pacific Ocean", ['PALCOV'] = "Paleto Cove", ['PALETO'] = "Paleto Bay", ['PALFOR'] = "Paleto Forest", ['PALHIGH'] = "Palomino Highlands", ['PALMPOW'] = "Palmer-Taylor Power Station", ['PBLUFF'] = "Pacific Bluffs", ['PBOX'] = "Pillbox Hill", ['PROCOB'] = "Procopio Beach", ['RANCHO'] = "Rancho", ['RGLEN'] = "Richman Glen", ['RICHM'] = "Richman", ['ROCKF'] = "Rockford Hills", ['RTRAK'] = "Redwood Lights Track", ['SANAND'] = "San Andreas", ['SANCHIA'] = "San Chianski Mountain Range", ['SANDY'] = "Sandy Shores", ['SKID'] = "Mission Row", ['SLAB'] = "Stab City", ['STAD'] = "Maze Bank Arena", ['STRAW'] = "Strawberry", ['TATAMO'] = "Tataviam Mountains", ['TERMINA'] = "Terminal", ['TEXTI'] = "Textile City", ['TONGVAH'] = "Tongva Hills", ['TONGVAV'] = "Tongva Valley", ['VCANA'] = "Vespucci Canals", ['VESP'] = "Vespucci", ['VINE'] = "Vinewood", ['WINDF'] = "Ron Alternates Wind Farm", ['WVINE'] = "West Vinewood", ['ZANCUDO'] = "Zancudo River", ['ZP_ORT'] = "Port of South Los Santos", ['ZQ_UAR'] = "Davis Quartz" }
+local zones = { ['AIRP'] = "Los Santos International Airport", ['ALAMO'] = "Alamo Sea", ['ALTA'] = "Alta", ['ARMYB'] = "Fort Zancudo", ['BANHAMC'] = "Banham Canyon Dr", ['BANNING'] = "Banning", ['BEACH'] = "Vespucci Beach", ['BHAMCA'] = "Banham Canyon", ['BRADP'] = "Braddock Pass", ['BRADT'] = "Braddock Tunnel", ['BURTON'] = "Burton", ['CALAFB'] = "Calafia Bridge", ['CANNY'] = "Raton Canyon", ['CCREAK'] = "Cassidy Creek", ['CHAMH'] = "Chamberlain Hills", ['CHIL'] = "Vinewood Hills", ['CHU'] = "Chumash", ['CMSW'] = "Chiliad Mountain State Wilderness", ['CYPRE'] = "Cypress Flats", ['DAVIS'] = "Davis", ['DELBE'] = "Del Perro Beach", ['DELPE'] = "Del Perro", ['DELSOL'] = "La Puerta", ['DESRT'] = "Grand Senora Desert", ['DOWNT'] = "Downtown", ['DTVINE'] = "Downtown Vinewood", ['EAST_V'] = "East Vinewood", ['EBURO'] = "El Burro Heights", ['ELGORL'] = "El Gordo Lighthouse", ['ELYSIAN'] = "Elysian Island", ['GALFISH'] = "Galilee", ['GOLF'] = "GWC and Golfing Society", ['GRAPES'] = "Grapeseed", ['GREATC'] = "Great Chaparral", ['HARMO'] = "Harmony", ['HAWICK'] = "Hawick", ['HORS'] = "Vinewood Racetrack", ['HUMLAB'] = "Humane Labs and Research", ['JAIL'] = "Bolingbroke Penitentiary", ['KOREAT'] = "Little Seoul", ['LACT'] = "Land Act Reservoir", ['LAGO'] = "Lago Zancudo", ['LDAM'] = "Land Act Dam", ['LEGSQU'] = "Legion Square", ['LMESA'] = "La Mesa", ['LOSPUER'] = "La Puerta", ['MIRR'] = "Mirror Park", ['MORN'] = "Morningwood", ['MOVIE'] = "Richards Majestic", ['MTCHIL'] = "Mount Chiliad", ['MTGORDO'] = "Mount Gordo", ['MTJOSE'] = "Mount Josiah", ['MURRI'] = "Murrieta Heights", ['NCHU'] = "North Chumash", ['NOOSE'] = "N.O.O.S.E", ['OCEANA'] = "Pacific Ocean", ['PALCOV'] = "Paleto Cove", ['PALETO'] = "Paleto Bay", ['PALFOR'] = "Paleto Forest", ['PALHIGH'] = "Palomino Highlands", ['PALMPOW'] = "Palmer-Taylor Power Station", ['PBLUFF'] = "Pacific Bluffs", ['PBOX'] = "Pillbox Hill", ['PROCOB'] = "Procopio Beach", ['RANCHO'] = "Rancho", ['RGLEN'] = "Richman Glen", ['RICHM'] = "Richman", ['ROCKF'] = "Rockford Hills", ['RTRAK'] = "Redwood Lights Track", ['SANAND'] = "San Andreas", ['SANCHIA'] = "San Chianski Mountain Range", ['SANDY'] = "Sandy Shores", ['SKID'] = "Mission Row", ['SLAB'] = "Stab City", ['STAD'] = "Maze Bank Arena", ['STRAW'] = "Strawberry", ['TATAMO'] = "Tataviam Mountains", ['TERMINA'] = "Terminal", ['TEXTI'] = "Textile City", ['TONGVAH'] = "Tongva Hills", ['TONGVAV'] = "Tongva Valley", ['VCANA'] = "Vespucci Canals", ['VESP'] = "Vespucci", ['VINE'] = "Vinewood", ['WINDF'] = "Ron Alternates Wind Farm", ['WVINE'] = "West Vinewood", ['ZANCUDO'] = "Zancudo River", ['ZP_ORT'] = "Port of South Los Santos", ['ZQTranslateAR'] = "Davis Quartz" }
 local Keys = {
 	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, ["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177, ["TAB"] = 37, ["Q"] = 44, ["W"] = 32, ["E"] = 38, ["R"] = 45, ["T"] = 245, ["Y"] = 246, ["U"] = 303, ["P"] = 199, ["["] = 39, ["]"] = 40, ["ENTER"] = 18, ["CAPS"] = 137, ["A"] = 34, ["S"] = 8, ["D"] = 9, ["F"] = 23, ["G"] = 47, ["H"] = 74, ["K"] = 311, ["L"] = 182, ["LEFTSHIFT"] = 21, ["Z"] = 20, ["X"] = 73, ["C"] = 26, ["V"] = 0, ["B"] = 29, ["N"] = 249, ["M"] = 244, [","] = 82, ["."] = 81, ["LEFTCTRL"] = 36, ["LEFTALT"] = 19, ["SPACE"] = 22, ["RIGHTCTRL"] = 70, ["HOME"] = 213, ["PAGEUP"] = 10, ["PAGEDOWN"] = 11, ["DELETE"] = 178, ["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173, ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
@@ -39,43 +39,6 @@ CreateThread(function()
 	end
 end)
 
-
--- Date and time update
-CreateThread(function()
-	while Config.ui.showDate do
-		Wait(2000)
-		SendNUIMessage({ action = 'setText', id = 'date', value = trewDate() })
-	end
-end)
-
--- Location update
-CreateThread(function()
-
-	while Config.ui.showLocation do
-		Wait(200)
-		local player = PlayerPedId()
-		local position = GetEntityCoords(player)
-		local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
-		local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
-
-		local locationMessage = nil
-
-		if zoneNameFull then 
-			locationMessage = streetName .. ', ' .. zoneNameFull
-		else
-			locationMessage = streetName
-		end
-
-		locationMessage = string.format(
-			Locales[Config.Locale]['you_are_on_location'],
-			locationMessage
-		)
-
-		SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
-	end
-end)
-
-
 -- Vehicle Info
 local vehicleCruiser
 local vehicleSignalIndicator = 'off'
@@ -88,7 +51,7 @@ local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 CreateThread(function()
 	while true do
 		Wait(200)
-		local player = PlayerPedId()
+		local player = ESX.PlayerData.ped
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)
 		local vehicleIsOn = GetIsVehicleEngineRunning(vehicle)
@@ -156,7 +119,7 @@ CreateThread(function()
 				local prevSpeed = currSpeed
                 currSpeed = vehicleSpeedSource
 
-                SetPedConfigFlag(PlayerPedId(), 32, true)
+                SetPedConfigFlag(ESX.PlayerData.ped, 32, true)
 
                 if not seatbeltIsOn then
                 	local vehIsMovingFwd = GetEntitySpeedVector(vehicle, true).y > 1.0
@@ -224,6 +187,29 @@ CreateThread(function()
 		end
 
 		SendNUIMessage(vehicleInfo)
+	
+		if Config.ui.showLocation then
+			Sleep = 200
+			local player = ESX.PlayerData.ped
+			local position = GetEntityCoords(player)
+			local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
+			local streetName = GetStreetNameFromHashKey(GetStreetNameAtCoord(position.x, position.y, position.z))
+
+			local locationMessage = nil
+
+			if zoneNameFull then 
+				locationMessage = streetName .. ', ' .. zoneNameFull
+			else
+				locationMessage = streetName
+			end
+
+			locationMessage = string.format(
+				Locales[Config.Locale]['you_are_on_location'],
+				locationMessage
+			)
+
+			SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
+		end
 	end
 end)
 
@@ -250,6 +236,10 @@ CreateThread(function()
 				value = GetEntityHealth(ESX.PlayerData.ped) - 100
 			}
 
+		end
+
+		if Config.ui.showDate then
+			SendNUIMessage({ action = 'setText', id = 'date', value = trewDate() })
 		end
 
 		if Config.ui.showArmor then
@@ -352,54 +342,35 @@ end)
 
 
 -- Voice detection and distance
-CreateThread(function()
+-- CreateThread(function()
+-- 	if Config.ui.showVoice then
+-- 		local isTalking = false
+-- 		local voiceDistance = nil
 
-	if Config.ui.showVoice then
+-- 		while true do
+-- 			Wait(1)
 
-	    RequestAnimDict('facials@gen_male@variations@normal')
-	    RequestAnimDict('mp_facial')
-
-	    while true do
-	        Wait(300)
-	        local playerID = PlayerId()
-
-	        for _,player in ipairs(GetActivePlayers()) do
-	            local boolTalking = NetworkIsPlayerTalking(player)
-
-	            if player ~= playerID then
-	                if boolTalking then
-	                    PlayFacialAnim(GetPlayerPed(player), 'mic_chatter', 'mp_facial')
-	                elseif not boolTalking then
-	                    PlayFacialAnim(GetPlayerPed(player), 'mood_normal_1', 'facials@gen_male@variations@normal')
-	                end
-	            end
-	        end
-	    end
-
-	end
-end)
+-- 			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
+-- 				isTalking = not isTalking
+-- 				SendNUIMessage({ action = 'isTalking', value = isTalking })
+-- 			elseif not NetworkIsPlayerTalking(PlayerId()) and isTalking then 
+-- 				isTalking = not isTalking
+-- 				SendNUIMessage({ action = 'isTalking', value = isTalking })
+-- 			end
 
 
+-- 			if Config.voice.levels.current == 0 then
+-- 				voiceDistance = 'normal'
+-- 			elseif Config.voice.levels.current == 1 then
+-- 				voiceDistance = 'shout'
+-- 			elseif Config.voice.levels.current == 2 then
+-- 				voiceDistance = 'whisper'
+-- 			end
+-- 		end
+-- 	end
+-- end)
 
-CreateThread(function()
-	if Config.ui.showVoice then
-		local isTalking = false
-		local voiceDistance = nil
-
-		while true do
-			Wait(1)
-
-			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
-				isTalking = not isTalking
-				SendNUIMessage({ action = 'isTalking', value = isTalking })
-			elseif not NetworkIsPlayerTalking(PlayerId()) and isTalking then 
-				isTalking = not isTalking
-				SendNUIMessage({ action = 'isTalking', value = isTalking })
-			end
-
-
-			if IsControlJustPressed(1, Keys[Config.voice.keys.distance]) then
-				Config.voice.levels.current = (Config.voice.levels.current + 1) % 3
+--[[				Config.voice.levels.current = (Config.voice.levels.current + 1) % 3
 
 				if Config.voice.levels.current == 0 then
 					NetworkSetTalkerProximity(Config.voice.levels.default)
@@ -412,19 +383,8 @@ CreateThread(function()
 					voiceDistance = 'whisper'
 				end
 
-				SendNUIMessage({ action = 'setVoiceDistance', value = voiceDistance })
-			end
+				SendNUIMessage({ action = 'setVoiceDistance', value = voiceDistance })]]
 
-			if Config.voice.levels.current == 0 then
-				voiceDistance = 'normal'
-			elseif Config.voice.levels.current == 1 then
-				voiceDistance = 'shout'
-			elseif Config.voice.levels.current == 2 then
-				voiceDistance = 'whisper'
-			end
-		end
-	end
-end)
 
 -- Weapons
 CreateThread(function()
@@ -518,7 +478,7 @@ CreateThread(function()
 				vehicleSignalIndicator = 'off'
 			end
 
-			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+			TriggerEvent('trew_hudTranslatei:setCarSignalLights', vehicleSignalIndicator)
 		end
 
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalRight]) and (has_value(vehiclesCars, vehicleClass) == true) then
@@ -528,7 +488,7 @@ CreateThread(function()
 				vehicleSignalIndicator = 'off'
 			end
 
-			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+			TriggerEvent('trew_hudTranslatei:setCarSignalLights', vehicleSignalIndicator)
 		end
 
 		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalBoth]) and (has_value(vehiclesCars, vehicleClass) == true) then
@@ -538,7 +498,7 @@ CreateThread(function()
 				vehicleSignalIndicator = 'off'
 			end
 
-			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+			TriggerEvent('trew_hudTranslatei:setCarSignalLights', vehicleSignalIndicator)
 		end
 	end
 end)
@@ -570,7 +530,7 @@ AddEventHandler('playerSpawned', function()
 	HideHudComponentThisFrame(13) -- Cash changes!
 end)
 
-AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
+AddEventHandler('trew_hudTranslatei:setCarSignalLights', function(status)
 	local driver = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
 	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver,vehicleTrailer)
 	local leftLight
@@ -598,15 +558,15 @@ AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 
 	end
 
-	TriggerServerEvent('trew_hud_ui:syncCarLights', status)
+	TriggerServerEvent('trew_hudTranslatei:syncCarLights', status)
 	SetVehicleIndicatorLights(driver, 0, leftLight)
 	SetVehicleIndicatorLights(driver, 1, rightLight)
 end)
 
 
 
-RegisterNetEvent('trew_hud_ui:syncCarLights')
-AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
+RegisterNetEvent('trew_hudTranslatei:syncCarLights')
+AddEventHandler('trew_hudTranslatei:syncCarLights', function(driver, status)
 	if GetPlayerFromServerId(driver) ~= PlayerId() then
 		local driver = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(driver)), false)
 
@@ -635,10 +595,10 @@ end)
 
 function trewDate()
 	local timeString = nil
-	local day = _U('day_' .. GetClockDayOfMonth())
-	local weekDay = _U('weekDay_' .. GetClockDayOfWeek())
-	local month = _U('month_' .. GetClockMonth())
-	local day = _U('day_' .. GetClockDayOfMonth())
+	local day = Translate('day_' .. GetClockDayOfMonth())
+	local weekDay = Translate('weekDay_' .. GetClockDayOfWeek())
+	local month = Translate('month_' .. GetClockMonth())
+	local day = Translate('day_' .. GetClockDayOfMonth())
 	local year = GetClockYear()
 	local hour = GetClockHours()
 	local minutes = GetClockMinutes()
