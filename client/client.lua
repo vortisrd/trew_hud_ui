@@ -1,42 +1,21 @@
 local zones = { ['AIRP'] = "Los Santos International Airport", ['ALAMO'] = "Alamo Sea", ['ALTA'] = "Alta", ['ARMYB'] = "Fort Zancudo", ['BANHAMC'] = "Banham Canyon Dr", ['BANNING'] = "Banning", ['BEACH'] = "Vespucci Beach", ['BHAMCA'] = "Banham Canyon", ['BRADP'] = "Braddock Pass", ['BRADT'] = "Braddock Tunnel", ['BURTON'] = "Burton", ['CALAFB'] = "Calafia Bridge", ['CANNY'] = "Raton Canyon", ['CCREAK'] = "Cassidy Creek", ['CHAMH'] = "Chamberlain Hills", ['CHIL'] = "Vinewood Hills", ['CHU'] = "Chumash", ['CMSW'] = "Chiliad Mountain State Wilderness", ['CYPRE'] = "Cypress Flats", ['DAVIS'] = "Davis", ['DELBE'] = "Del Perro Beach", ['DELPE'] = "Del Perro", ['DELSOL'] = "La Puerta", ['DESRT'] = "Grand Senora Desert", ['DOWNT'] = "Downtown", ['DTVINE'] = "Downtown Vinewood", ['EAST_V'] = "East Vinewood", ['EBURO'] = "El Burro Heights", ['ELGORL'] = "El Gordo Lighthouse", ['ELYSIAN'] = "Elysian Island", ['GALFISH'] = "Galilee", ['GOLF'] = "GWC and Golfing Society", ['GRAPES'] = "Grapeseed", ['GREATC'] = "Great Chaparral", ['HARMO'] = "Harmony", ['HAWICK'] = "Hawick", ['HORS'] = "Vinewood Racetrack", ['HUMLAB'] = "Humane Labs and Research", ['JAIL'] = "Bolingbroke Penitentiary", ['KOREAT'] = "Little Seoul", ['LACT'] = "Land Act Reservoir", ['LAGO'] = "Lago Zancudo", ['LDAM'] = "Land Act Dam", ['LEGSQU'] = "Legion Square", ['LMESA'] = "La Mesa", ['LOSPUER'] = "La Puerta", ['MIRR'] = "Mirror Park", ['MORN'] = "Morningwood", ['MOVIE'] = "Richards Majestic", ['MTCHIL'] = "Mount Chiliad", ['MTGORDO'] = "Mount Gordo", ['MTJOSE'] = "Mount Josiah", ['MURRI'] = "Murrieta Heights", ['NCHU'] = "North Chumash", ['NOOSE'] = "N.O.O.S.E", ['OCEANA'] = "Pacific Ocean", ['PALCOV'] = "Paleto Cove", ['PALETO'] = "Paleto Bay", ['PALFOR'] = "Paleto Forest", ['PALHIGH'] = "Palomino Highlands", ['PALMPOW'] = "Palmer-Taylor Power Station", ['PBLUFF'] = "Pacific Bluffs", ['PBOX'] = "Pillbox Hill", ['PROCOB'] = "Procopio Beach", ['RANCHO'] = "Rancho", ['RGLEN'] = "Richman Glen", ['RICHM'] = "Richman", ['ROCKF'] = "Rockford Hills", ['RTRAK'] = "Redwood Lights Track", ['SANAND'] = "San Andreas", ['SANCHIA'] = "San Chianski Mountain Range", ['SANDY'] = "Sandy Shores", ['SKID'] = "Mission Row", ['SLAB'] = "Stab City", ['STAD'] = "Maze Bank Arena", ['STRAW'] = "Strawberry", ['TATAMO'] = "Tataviam Mountains", ['TERMINA'] = "Terminal", ['TEXTI'] = "Textile City", ['TONGVAH'] = "Tongva Hills", ['TONGVAV'] = "Tongva Valley", ['VCANA'] = "Vespucci Canals", ['VESP'] = "Vespucci", ['VINE'] = "Vinewood", ['WINDF'] = "Ron Alternates Wind Farm", ['WVINE'] = "West Vinewood", ['ZANCUDO'] = "Zancudo River", ['ZP_ORT'] = "Port of South Los Santos", ['ZQTranslateAR'] = "Davis Quartz" }
-local Keys = {
-	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57, ["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177, ["TAB"] = 37, ["Q"] = 44, ["W"] = 32, ["E"] = 38, ["R"] = 45, ["T"] = 245, ["Y"] = 246, ["U"] = 303, ["P"] = 199, ["["] = 39, ["]"] = 40, ["ENTER"] = 18, ["CAPS"] = 137, ["A"] = 34, ["S"] = 8, ["D"] = 9, ["F"] = 23, ["G"] = 47, ["H"] = 74, ["K"] = 311, ["L"] = 182, ["LEFTSHIFT"] = 21, ["Z"] = 20, ["X"] = 73, ["C"] = 26, ["V"] = 0, ["B"] = 29, ["N"] = 249, ["M"] = 244, [","] = 82, ["."] = 81, ["LEFTCTRL"] = 36, ["LEFTALT"] = 19, ["SPACE"] = 22, ["RIGHTCTRL"] = 70, ["HOME"] = 213, ["PAGEUP"] = 10, ["PAGEDOWN"] = 11, ["DELETE"] = 178, ["LEFT"] = 174, ["RIGHT"] = 175, ["TOP"] = 27, ["DOWN"] = 173, ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
-}
 
 local AllWeapons = json.decode('{"melee":{"dagger":"0x92A27487","bat":"0x958A4A8F","bottle":"0xF9E6AA4B","crowbar":"0x84BD7BFD","unarmed":"0xA2719263","flashlight":"0x8BB05FD7","golfclub":"0x440E4788","hammer":"0x4E875F73","hatchet":"0xF9DCBF2D","knuckle":"0xD8DF3C3C","knife":"0x99B507EA","machete":"0xDD5DF8D9","switchblade":"0xDFE37640","nightstick":"0x678B81B1","wrench":"0x19044EE0","battleaxe":"0xCD274149","poolcue":"0x94117305","stone_hatchet":"0x3813FC08"},"handguns":{"pistol":"0x1B06D571","pistol_mk2":"0xBFE256D4","combatpistol":"0x5EF9FEC4","appistol":"0x22D8FE39","stungun":"0x3656C8C1","pistol50":"0x99AEEB3B","snspistol":"0xBFD21232","snspistol_mk2":"0x88374054","heavypistol":"0xD205520E","vintagepistol":"0x83839C4","flaregun":"0x47757124","marksmanpistol":"0xDC4DB296","revolver":"0xC1B3C3D1","revolver_mk2":"0xCB96392F","doubleaction":"0x97EA20B8","raypistol":"0xAF3696A1"},"smg":{"microsmg":"0x13532244","smg":"0x2BE6766B","smg_mk2":"0x78A97CD0","assaultsmg":"0xEFE7E2DF","combatpdw":"0xA3D4D34","machinepistol":"0xDB1AA450","minismg":"0xBD248B55","raycarbine":"0x476BF155"},"shotguns":{"pumpshotgun":"0x1D073A89","pumpshotgun_mk2":"0x555AF99A","sawnoffshotgun":"0x7846A318","assaultshotgun":"0xE284C527","bullpupshotgun":"0x9D61E50F","musket":"0xA89CB99E","heavyshotgun":"0x3AABBBAA","dbshotgun":"0xEF951FBB","autoshotgun":"0x12E82D3D"},"assault_rifles":{"assaultrifle":"0xBFEFFF6D","assaultrifle_mk2":"0x394F415C","carbinerifle":"0x83BF0278","carbinerifle_mk2":"0xFAD1F1C9","advancedrifle":"0xAF113F99","specialcarbine":"0xC0A3098D","specialcarbine_mk2":"0x969C3D67","bullpuprifle":"0x7F229F94","bullpuprifle_mk2":"0x84D6FAFD","compactrifle":"0x624FE830"},"machine_guns":{"mg":"0x9D07F764","combatmg":"0x7FD62962","combatmg_mk2":"0xDBBD7280","gusenberg":"0x61012683"},"sniper_rifles":{"sniperrifle":"0x5FC3C11","heavysniper":"0xC472FE2","heavysniper_mk2":"0xA914799","marksmanrifle":"0xC734385A","marksmanrifle_mk2":"0x6A6C02E0"},"heavy_weapons":{"rpg":"0xB1CA77B1","grenadelauncher":"0xA284510B","grenadelauncher_smoke":"0x4DD2DC56","minigun":"0x42BF8A85","firework":"0x7F7497E5","railgun":"0x6D544C99","hominglauncher":"0x63AB0442","compactlauncher":"0x781FE4A","rayminigun":"0xB62D1F67"},"throwables":{"grenade":"0x93E220BD","bzgas":"0xA0973D5E","smokegrenade":"0xFDBC8A50","flare":"0x497FACC3","molotov":"0x24B17070","stickybomb":"0x2C3731D9","proxmine":"0xAB564B93","snowball":"0x787F0BB","pipebomb":"0xBA45E8B8","ball":"0x23C9F95C"},"misc":{"petrolcan":"0x34A67B97","fireextinguisher":"0x60EC506","parachute":"0xFBAB5776"}}')
 local vehiclesCars = {0,1,2,3,4,5,6,7,8,9,10,11,12,17,18,19,20};
+local isTalking = false
+function Startup()
+	SendNUIMessage({ action = 'ui', config = Config.ui })
+	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
+	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
+	SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity.mode })
+end
 
-CreateThread(function()
+AddEventHandler('esx:onPlayerSpawn', function()
+	Startup()
+end)
 
-    local isPauseMenu = false
-
-	while true do
-		Wait(300)
-
-		if IsPauseMenuActive() then -- ESC Key
-			if not isPauseMenu then
-				isPauseMenu = not isPauseMenu
-				SendNUIMessage({ action = 'toggleUi', value = false })
-			end
-		else
-			if isPauseMenu then
-				isPauseMenu = not isPauseMenu
-				SendNUIMessage({ action = 'toggleUi', value = true })
-			end
-
-			HideHudComponentThisFrame(1)  -- Wanted Stars
-			HideHudComponentThisFrame(2)  -- Weapon Icon
-			HideHudComponentThisFrame(3)  -- Cash
-			HideHudComponentThisFrame(4)  -- MP Cash
-			HideHudComponentThisFrame(6)  -- Vehicle Name
-			HideHudComponentThisFrame(7)  -- Area Name
-			HideHudComponentThisFrame(8)  -- Vehicle Class
-			HideHudComponentThisFrame(9)  -- Street Name
-			HideHudComponentThisFrame(13) -- Cash Change
-			HideHudComponentThisFrame(17) -- Save Game
-			HideHudComponentThisFrame(20) -- Weapon Stats
-		end
-	end
+AddEventHandler('onResourceStart', function()
+	Startup()
 end)
 
 -- Vehicle Info
@@ -56,6 +35,18 @@ CreateThread(function()
 		local position = GetEntityCoords(player)
 		local vehicleIsOn = GetIsVehicleEngineRunning(vehicle)
 		local vehicleInfo
+
+		if IsPauseMenuActive() then -- ESC Key
+			if not isPauseMenu then
+				isPauseMenu = not isPauseMenu
+				SendNUIMessage({ action = 'toggleUi', value = false })
+			end
+		else
+			if isPauseMenu then
+				isPauseMenu = not isPauseMenu
+				SendNUIMessage({ action = 'toggleUi', value = true })
+			end
+		end
 		if IsPedInAnyVehicle(player, false) and vehicleIsOn then
 			local vehicleClass = GetVehicleClass(vehicle)
 
@@ -114,7 +105,7 @@ CreateThread(function()
 			end
 
 			-- Vehicle Seatbelt
-			if has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8 then
+			if has_value(vehiclesCars, vehicleClass) and vehicleClass ~= 8 then
 
 				local prevSpeed = currSpeed
                 currSpeed = vehicleSpeedSource
@@ -209,13 +200,23 @@ CreateThread(function()
 
 			SendNUIMessage({ action = 'setText', id = 'location', value = locationMessage })
 		end
+
+		if Config.ui.showVoice then
+			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
+				isTalking = not isTalking
+				SendNUIMessage({ action = 'isTalking', value = isTalking })
+			elseif not NetworkIsPlayerTalking(PlayerId()) and isTalking then
+				isTalking = not isTalking
+				SendNUIMessage({ action = 'isTalking', value = isTalking })
+			end
+		end
 	end
 end)
 
 CreateThread(function()
 
 	while true do
-		Wait(5000)
+		Wait(2000)
 
 		local playerStatus 
 		local showPlayerStatus = 0
@@ -290,7 +291,7 @@ CreateThread(function()
   	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
 
   		if ESX.PlayerData.job.grade_name and ESX.PlayerData.job.grade_name == 'boss' then
-  			if (Config.ui.showSocietyMoney == true) then
+  			if (Config.ui.showSocietyMoney) then
   				SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
   			end
   			ESX.TriggerServerCallback('esx_society:getSocietyMoney', function(money)
@@ -332,202 +333,157 @@ CreateThread(function()
   	if showPlayerStatus > 0 then
   	    SendNUIMessage(playerStatus)
   	end
+
+	  if Config.ui.showVoice then
+		AddEventHandler('pma-voice:setTalkingMode', function()
+			print(LocalPlayer.state.proximity.mode)
+			SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity.mode })
+		end)
+	  end
     end
 end)
 
-
--- Voice detection and distance
--- CreateThread(function()
--- 	if Config.ui.showVoice then
--- 		local isTalking = false
--- 		local voiceDistance = nil
-
--- 		while true do
--- 			Wait(1)
-
--- 			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
--- 				isTalking = not isTalking
--- 				SendNUIMessage({ action = 'isTalking', value = isTalking })
--- 			elseif not NetworkIsPlayerTalking(PlayerId()) and isTalking then 
--- 				isTalking = not isTalking
--- 				SendNUIMessage({ action = 'isTalking', value = isTalking })
--- 			end
-
-
--- 			if Config.voice.levels.current == 0 then
--- 				voiceDistance = 'normal'
--- 			elseif Config.voice.levels.current == 1 then
--- 				voiceDistance = 'shout'
--- 			elseif Config.voice.levels.current == 2 then
--- 				voiceDistance = 'whisper'
--- 			end
--- 		end
--- 	end
--- end)
-
---[[				Config.voice.levels.current = (Config.voice.levels.current + 1) % 3
-
-				if Config.voice.levels.current == 0 then
-					NetworkSetTalkerProximity(Config.voice.levels.default)
-					voiceDistance = 'normal'
-				elseif Config.voice.levels.current == 1 then
-					NetworkSetTalkerProximity(Config.voice.levels.shout)
-					voiceDistance = 'shout'
-				elseif Config.voice.levels.current == 2 then
-					NetworkSetTalkerProximity(Config.voice.levels.whisper)
-					voiceDistance = 'whisper'
-				end
-
-				SendNUIMessage({ action = 'setVoiceDistance', value = voiceDistance })]]
-
-
 -- Weapons
-CreateThread(function()
-	if Config.ui.showWeapons then
-		while true do
-			Wait(100)
-
-			local player = ESX.PlayerData.ped
-			local status = {}
-
-			if IsPedArmed(player, 7) then
-				local weapon = GetSelectedPedWeapon(player)
-				local ammoTotal = GetAmmoInPedWeapon(player,weapon)
-				local bool,ammoClip = GetAmmoInClip(player,weapon)
-				local ammoRemaining = math.floor(ammoTotal - ammoClip)
-				
-				status['armed'] = true
-
-				for key,value in pairs(AllWeapons) do
-
-					for keyTwo,valueTwo in pairs(AllWeapons[key]) do
-						if weapon == joaat('weapon_'..keyTwo) then
-							status['weapon'] = keyTwo
+if Config.ui.showWeapons then
+	CreateThread(function()
+			while true do
+				local Sleep = 800
 
 
-							if key == 'melee' then
-								SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
-								SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
-							else
-								if keyTwo == 'stungun' then
+				local player = ESX.PlayerData.ped
+				local status = {}
+
+				if IsPedArmed(player, 7) then
+					Sleep = 100
+					local weapon = GetSelectedPedWeapon(player)
+					local ammoTotal = GetAmmoInPedWeapon(player,weapon)
+					local bool,ammoClip = GetAmmoInClip(player,weapon)
+					local ammoRemaining = math.floor(ammoTotal - ammoClip)
+					
+					status['armed'] = true
+
+					for key,value in pairs(AllWeapons) do
+
+						for keyTwo,valueTwo in pairs(AllWeapons[key]) do
+							if weapon == joaat('weapon_'..keyTwo) then
+								status['weapon'] = keyTwo
+
+
+								if key == 'melee' then
 									SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
 									SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
 								else
-									SendNUIMessage({ action = 'element', task = 'enable', value = 'weapon_bullets' })
-									SendNUIMessage({ action = 'element', task = 'enable', value = 'bullets' })
+									if keyTwo == 'stungun' then
+										SendNUIMessage({ action = 'element', task = 'disable', value = 'weapon_bullets' })
+										SendNUIMessage({ action = 'element', task = 'disable', value = 'bullets' })
+									else
+										SendNUIMessage({ action = 'element', task = 'enable', value = 'weapon_bullets' })
+										SendNUIMessage({ action = 'element', task = 'enable', value = 'bullets' })
+									end
 								end
-							end
 
+							end
 						end
+
 					end
 
+					SendNUIMessage({ action = 'setText', id = 'weapon_clip', value = ammoClip })
+					SendNUIMessage({ action = 'setText', id = 'weapon_ammo', value = ammoRemaining })
+
+				else
+					if status['armed'] then
+						status['armed'] = false
+						SendNUIMessage({ action = 'updateWeapon', status = status })
+					end
 				end
 
-				SendNUIMessage({ action = 'setText', id = 'weapon_clip', value = ammoClip })
-				SendNUIMessage({ action = 'setText', id = 'weapon_ammo', value = ammoRemaining })
-
-			else
-				status['armed'] = false	
+				SendNUIMessage({ action = 'updateWeapon', status = status })
+				Wait(Sleep)
 			end
+	end)
+end
 
-			SendNUIMessage({ action = 'updateWeapon', status = status })
-
-		end
+ESX.RegisterInput("cruise", "[HUD] Cruise Control", "keyboard", Config.vehicle.keys.cruiser, function()
+	local player = ESX.PlayerData.ped
+	local vehicle = GetVehiclePedIsIn(player, false)
+	local vehicleSpeedSource = GetEntitySpeed(vehicle)
+	if  GetPedInVehicleSeat(vehicle, -1) ~= player then
+		return
 	end
-end)
--- Everything that neededs to be at WAIT 0
-CreateThread(function()
-	while true do
-		Wait(0)
-		local player = ESX.PlayerData.ped
-		local vehicle = GetVehiclePedIsIn(player, false)
-		local vehicleClass = GetVehicleClass(vehicle)
-
-		-- Vehicle Seatbelt
-		if IsPedInAnyVehicle(player, false) and GetIsVehicleEngineRunning(vehicle) then
-			if IsControlJustReleased(0, Keys[Config.vehicle.keys.seatbelt]) and (has_value(vehiclesCars, vehicleClass) == true and vehicleClass ~= 8) then
-				seatbeltIsOn = not seatbeltIsOn
-			end
-		end
-
-		-- Vehicle Cruiser
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.cruiser]) and GetPedInVehicleSeat(vehicle, -1) == player and (has_value(vehiclesCars, vehicleClass) == true) then
-			
-			local vehicleSpeedSource = GetEntitySpeed(vehicle)
-
-			if vehicleCruiser == 'on' then
-				vehicleCruiser = 'off'
-				SetEntityMaxSpeed(vehicle, GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
-				
-			else
-				vehicleCruiser = 'on'
-				SetEntityMaxSpeed(vehicle, vehicleSpeedSource)
-			end
-		end
-
-		-- Vehicle Signal Lights
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalLeft]) and (has_value(vehiclesCars, vehicleClass) == true) then
-			if vehicleSignalIndicator == 'off' then
-				vehicleSignalIndicator = 'left'
-			else
-				vehicleSignalIndicator = 'off'
-			end
-
-			TriggerEvent('trew_hudTranslatei:setCarSignalLights', vehicleSignalIndicator)
-		end
-
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalRight]) and (has_value(vehiclesCars, vehicleClass) == true) then
-			if vehicleSignalIndicator == 'off' then
-				vehicleSignalIndicator = 'right'
-			else
-				vehicleSignalIndicator = 'off'
-			end
-
-			TriggerEvent('trew_hudTranslatei:setCarSignalLights', vehicleSignalIndicator)
-		end
-
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalBoth]) and (has_value(vehiclesCars, vehicleClass) == true) then
-			if vehicleSignalIndicator == 'off' then
-				vehicleSignalIndicator = 'both'
-			else
-				vehicleSignalIndicator = 'off'
-			end
-
-			TriggerEvent('trew_hudTranslatei:setCarSignalLights', vehicleSignalIndicator)
-		end
+	if vehicleCruiser == 'on' then
+		vehicleCruiser = 'off'
+		SetEntityMaxSpeed(vehicle, GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel"))
+		
+	else
+		vehicleCruiser = 'on'
+		SetEntityMaxSpeed(vehicle, vehicleSpeedSource)
 	end
 end)
 
-AddEventHandler('esx:onPlayerSpawn', function()
-	SendNUIMessage({ action = 'ui', config = Config.ui })
-	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
-	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
-	if Config.ui.showVoice then
-		if Config.voice.levels.current == 0 then
-			NetworkSetTalkerProximity(Config.voice.levels.default)
-		elseif Config.voice.levels.current == 1 then
-			NetworkSetTalkerProximity(Config.voice.levels.shout)
-		elseif Config.voice.levels.current == 2 then
-			NetworkSetTalkerProximity(Config.voice.levels.whisper)
-		end
+ESX.RegisterInput("seatbelt", "[HUD] Seatbelt", "keyboard", Config.vehicle.keys.seatbelt, function()
+	local player = ESX.PlayerData.ped
+	local vehicle = GetVehiclePedIsIn(player, false)
+	local vehicleClass = GetVehicleClass(vehicle)
+	if not (IsPedInAnyVehicle(player, false) and GetIsVehicleEngineRunning(vehicle)) then
+		return
 	end
+	if has_value(vehiclesCars, vehicleClass) ~= true and vehicleClass == 8 then 
+		return 
+	end
+	seatbeltIsOn = not seatbeltIsOn
 end)
 
-AddEventHandler('playerSpawned', function()
-	if Config.ui.showVoice == true then
-	    NetworkSetTalkerProximity(5.0)
+ESX.RegisterInput("leftindicator", "[HUD] Left Indicator", "keyboard", Config.vehicle.keys.signalLeft, function()
+	local player = ESX.PlayerData.ped
+	local vehicle = GetVehiclePedIsIn(player, false)
+	local vehicleClass = GetVehicleClass(vehicle)
+	if has_value(vehiclesCars, vehicleClass) ~= true then
+		return
 	end
-	HideHudComponentThisFrame(7) -- Area
-	HideHudComponentThisFrame(9) -- Street
-	HideHudComponentThisFrame(6) -- Vehicle
-	HideHudComponentThisFrame(3) -- SP Cash
-	HideHudComponentThisFrame(4) -- MP Cash
-	HideHudComponentThisFrame(13) -- Cash changes!
+	if vehicleSignalIndicator == 'off' then
+		vehicleSignalIndicator = 'left'
+	else
+		vehicleSignalIndicator = 'off'
+	end
+
+	TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
 end)
 
-AddEventHandler('trew_hudTranslatei:setCarSignalLights', function(status)
+ESX.RegisterInput("rightindicator", "[HUD] Right Indicator", "keyboard", Config.vehicle.keys.signalRight, function()
+	local player = ESX.PlayerData.ped
+	local vehicle = GetVehiclePedIsIn(player, false)
+	local vehicleClass = GetVehicleClass(vehicle)
+	if has_value(vehiclesCars, vehicleClass) ~= true then
+		return
+	end
+	if vehicleSignalIndicator == 'off' then
+		vehicleSignalIndicator = 'right'
+	else
+		vehicleSignalIndicator = 'off'
+	end
+
+	TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+end)
+
+ESX.RegisterInput("bothindicator", "[HUD] Both Indicators", "keyboard", Config.vehicle.keys.signalBoth, function()
+	local player = ESX.PlayerData.ped
+	local vehicle = GetVehiclePedIsIn(player, false)
+	local vehicleClass = GetVehicleClass(vehicle)
+	if has_value(vehiclesCars, vehicleClass) ~= true then
+		return
+	end
+	if vehicleSignalIndicator == 'off' then
+		vehicleSignalIndicator = 'both'
+	else
+		vehicleSignalIndicator = 'off'
+	end
+
+	TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
+end)
+
+AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 	local driver = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
-	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver,vehicleTrailer)
+	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver)
 	local leftLight
 	local rightLight
 
@@ -535,7 +491,6 @@ AddEventHandler('trew_hudTranslatei:setCarSignalLights', function(status)
 		leftLight = false
 		rightLight = true
 		if hasTrailer then driver = vehicleTrailer end
-
 	elseif status == 'right' then
 		leftLight = true
 		rightLight = false
@@ -553,39 +508,8 @@ AddEventHandler('trew_hudTranslatei:setCarSignalLights', function(status)
 
 	end
 
-	TriggerServerEvent('trew_hudTranslatei:syncCarLights', status)
 	SetVehicleIndicatorLights(driver, 0, leftLight)
 	SetVehicleIndicatorLights(driver, 1, rightLight)
-end)
-
-
-
-RegisterNetEvent('trew_hudTranslatei:syncCarLights')
-AddEventHandler('trew_hudTranslatei:syncCarLights', function(driver, status)
-	if GetPlayerFromServerId(driver) ~= PlayerId() then
-		local driver = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(driver)), false)
-
-		if status == 'left' then
-			leftLight = false
-			rightLight = true
-
-		elseif status == 'right' then
-			leftLight = true
-			rightLight = false
-
-		elseif status == 'both' then
-			leftLight = true
-			rightLight = true
-
-		else
-			leftLight = false
-			rightLight = false
-		end
-
-		SetVehicleIndicatorLights(driver, 0, leftLight)
-		SetVehicleIndicatorLights(driver, 1, rightLight)
-
-	end
 end)
 
 function trewDate()
@@ -686,19 +610,19 @@ RegisterCommand('toggleui', function()
 		SendNUIMessage({ action = 'element', task = 'disable', value = 'blackMoney' })
 		SendNUIMessage({ action = 'element', task = 'disable', value = 'wallet' })
 	else
-		if (Config.ui.showJob == true) then
+		if (Config.ui.showJob) then
 			SendNUIMessage({ action = 'element', task = 'enable', value = 'job' })
 		end
-		if (Config.ui.showSocietyMoney == true) then
+		if (Config.ui.showSocietyMoney) then
 			SendNUIMessage({ action = 'element', task = 'enable', value = 'society' })
 		end
-		if (Config.ui.showBankMoney == true) then
+		if (Config.ui.showBankMoney) then
 			SendNUIMessage({ action = 'element', task = 'enable', value = 'bank' })
 		end
-		if (Config.ui.showBlackMoney == true) then
+		if (Config.ui.showBlackMoney) then
 			SendNUIMessage({ action = 'element', task = 'enable', value = 'blackMoney' })
 		end
-		if (Config.ui.showWalletMoney == true) then
+		if (Config.ui.showWalletMoney) then
 			SendNUIMessage({ action = 'element', task = 'enable', value = 'wallet' })
 		end
 	end

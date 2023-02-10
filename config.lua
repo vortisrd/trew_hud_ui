@@ -30,7 +30,7 @@ Config.voice = {
 
 
 Config.vehicle = {
-	speedUnit = 'KMH',
+	speedUnit = 'MPH',
 	maxSpeed = 240,
 
 	keys = {
@@ -43,13 +43,13 @@ Config.vehicle = {
 }
 
 Config.ui = {
-	showServerLogo		= true,
+	showServerLogo		= false,
 
 	showJob		 		= true,
 
 	showWalletMoney 	= true,
 	showBankMoney 		= true,
-	showBlackMoney 		= true,
+	showBlackMoney 		= false,
 	showSocietyMoney	= true,
 
 	showDate 			= true,
