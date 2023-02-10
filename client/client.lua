@@ -15,10 +15,6 @@ AddEventHandler('esx:onPlayerSpawn', function()
 	Startup()
 end)
 
-AddEventHandler('onResourceStart', function()
-	Startup()
-end)
-
 -- Vehicle Info
 local vehicleCruiser
 local vehicleSignalIndicator = 'off'
@@ -29,6 +25,7 @@ local currSpeed = 0.0
 local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 CreateThread(function()
+	Startup()
 	while true do
 		Wait(200)
 		local player = ESX.PlayerData.ped
@@ -275,7 +272,6 @@ CreateThread(function()
           job = ESX.PlayerData.job.label .. ': ' .. ESX.PlayerData.job.grade_label
         end
 
-
         for i=1, #ESX.PlayerData.accounts, 1 do
           if ESX.PlayerData.accounts[i].name == 'black_money' then
                 blackMoney = ESX.PlayerData.accounts[i].money
@@ -286,10 +282,10 @@ CreateThread(function()
           end
         end
 
-  	SendNUIMessage({ action = 'setText', id = 'job', value = job })
-  	SendNUIMessage({ action = 'setMoney', id = 'wallet', value = money })
-  	SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
-  	SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
+		SendNUIMessage({ action = 'setText', id = 'job', value = job })
+		SendNUIMessage({ action = 'setMoney', id = 'wallet', value = money })
+		SendNUIMessage({ action = 'setMoney', id = 'bank', value = bank })
+		SendNUIMessage({ action = 'setMoney', id = 'blackMoney', value = blackMoney })
 
   		if ESX.PlayerData.job.grade_name and ESX.PlayerData.job.grade_name == 'boss' then
   			if (Config.ui.showSocietyMoney) then
@@ -337,7 +333,6 @@ CreateThread(function()
 
 	  if Config.ui.showVoice then
 		AddEventHandler('pma-voice:setTalkingMode', function()
-			print(LocalPlayer.state.proximity.mode)
 			SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity.mode })
 		end)
 	  end
