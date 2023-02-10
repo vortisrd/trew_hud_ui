@@ -7,11 +7,12 @@ One of the most, if not **the most**, popular hud for FiveM brought back with a 
 ```diff
 + PMA Voice Support
 + ESX Legacy Support
-- Removed Unused Code
 + Rewrote major sections
 + Completely Optimised
 + Better Font
 + Completely Client-Sided
+- Removed Unused Code
+- Removed Unused Files
 ```
 
 # Preivew

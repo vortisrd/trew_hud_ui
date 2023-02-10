@@ -254,8 +254,6 @@ CreateThread(function()
 			}
 		end
 
-		
-
 		if showPlayerStatus > 0 then
 			SendNUIMessage(playerStatus)
 		end
@@ -303,7 +301,6 @@ CreateThread(function()
   	local showPlayerStatus = 0
   	playerStatus = { action = 'setStatus', status = {} }
 
-
   	if Config.ui.showHunger then
   		showPlayerStatus = (showPlayerStatus+1)
 
@@ -344,7 +341,6 @@ if Config.ui.showWeapons then
 	CreateThread(function()
 			while true do
 				local Sleep = 800
-
 
 				local player = ESX.PlayerData.ped
 				local status = {}
@@ -576,9 +572,6 @@ function trewDate()
 			time, weekDay, day, month, year
 		)
 	end
-
-
-	
 
 	return timeString
 end
