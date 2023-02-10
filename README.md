@@ -15,9 +15,9 @@ One of the most, if not **the most**, popular hud for FiveM brought back with a 
 - Removed Unused Files
 ```
 
-# Preivew
+# Preview
 
-[![TREW HUD UI DEMO](https://i.imgur.com/DyaZ6Jl.png)](https://youtu.be/u1QTJ5aHcGA)
+[![Preview](https://i.imgur.com/kerhT5C.png)](https://streamable.com/rhrrn6)
 
 ## Installation
 
