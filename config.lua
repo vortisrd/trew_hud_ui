@@ -5,8 +5,8 @@ Config.Locale = 'en'
 Config.serverLogo = 'https://i.imgur.com/9a3Tj94.png'
 
 Config.font = {
-	name 	= 'Montserrat',
-	url 	= 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900&display=swap'
+	name 	= 'Signika Negative',
+	url 	= 'https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap'
 }
 
 Config.date = {
@@ -31,7 +31,7 @@ Config.voice = {
 
 Config.vehicle = {
 	speedUnit = 'MPH',
-	maxSpeed = 240,
+	maxSpeed = 180,
 
 	keys = {
 		seatbelt 	= 'K',
