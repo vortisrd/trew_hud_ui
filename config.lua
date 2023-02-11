@@ -14,21 +14,6 @@ Config.date = {
 	AmPm		= false
 }
 
-Config.voice = {
-
-	levels = {
-		default = 5.0,
-		shout = 12.0,
-		whisper = 1.0,
-		current = 0
-	},
-	
-	keys = {
-		distance 	= '~',
-	}
-}
-
-
 Config.vehicle = {
 	speedUnit = 'MPH',
 	maxSpeed = 180,
