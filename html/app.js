@@ -120,7 +120,7 @@ window.onload = function () {
 				var voiceId = document.querySelector('#voice');
 				var voiceIdWithClasses = voiceId.classList;
 
-				voiceIdWithClasses.remove('whisper', 'normal', 'shout');
+				voiceIdWithClasses.remove('Whisper', 'Normal', 'Shouting');
 				voiceIdWithClasses.add(data.value);
 			},
 
