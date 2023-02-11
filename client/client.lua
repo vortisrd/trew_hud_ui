@@ -8,7 +8,7 @@ function Startup()
 	SendNUIMessage({ action = 'ui', config = Config.ui })
 	SendNUIMessage({ action = 'setFont', url = Config.font.url, name = Config.font.name })
 	SendNUIMessage({ action = 'setLogo', value = Config.serverLogo })
-	SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity.mode })
+	SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity and LocalPlayer.state.proximity.mode or "Normal" })
 end
 
 AddEventHandler('esx:onPlayerSpawn', function()
@@ -330,7 +330,7 @@ CreateThread(function()
 
 	  if Config.ui.showVoice then
 		AddEventHandler('pma-voice:setTalkingMode', function()
-			SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity.mode })
+			SendNUIMessage({ action = 'setVoiceDistance', value = LocalPlayer.state.proximity and LocalPlayer.state.proximity.mode or "Normal" })
 		end)
 	  end
     end
