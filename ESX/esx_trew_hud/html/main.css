@@ -68,7 +68,7 @@ div.separator { display: block; clear: both; width: 100%; }
 .info.player #money #blackMoney i { background: linear-gradient(180deg, #474747 0%, #252525 100%); }
 .info.player #money #bank i { background: linear-gradient(180deg, #c70a0a 0%, #960505 100%); }
 .info.player #money #society i { background: linear-gradient(180deg, #874c14 0%, #6a3c10 100%); }
-
+.info.player #money #plyId i { background: linear-gradient(180deg, #635ebd 0%, #3776ff 100%); }
 /*.info.player #money #wallet i:before  { content: '\f153';  }*/
 
 
@@ -76,7 +76,6 @@ div.separator { display: block; clear: both; width: 100%; }
 .info.player #status ul { margin: 10px 0 0 0; }
 .info.player #status ul li { float: right;}
 .info.player #status ul li#health span { background: linear-gradient(180deg, #ff0000 0%, #aa0000 100%); }
-.info.player #status ul li#plyId span { background: linear-gradient(180deg, #3dff8b 0%, #00ff66 100%); }
 .info.player #status ul li#armor span { background: linear-gradient(180deg, #0bcfe6 0%, #0aa3b5 100%); }
 .info.player #status ul li#stamina span { background: linear-gradient(180deg, #ffb700 0%, #e0a102 100%); }
 .info.player #status ul li#hunger span { background: linear-gradient(180deg, #ff8000 0%, #cd6700 100%); }
