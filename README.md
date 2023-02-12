@@ -11,8 +11,10 @@ One of the most, if not **the most**, popular hud for FiveM brought back with a 
 + Completely Optimised
 + Better Font
 + Completely Client-Sided
++ Added Player Id to HUD
 - Removed Unused Code
 - Removed Unused Files
+- Removed vRP support
 ```
 
 # Preview
