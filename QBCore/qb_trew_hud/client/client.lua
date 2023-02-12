@@ -119,6 +119,9 @@ end
 
 CreateThread(function()
 	Startup()
+	while not LocalPlayer.state.isLoggedIn do
+		Wait(0)
+	end
 	while true do
 		Wait(200)
 		local player = PlayerPedId()
@@ -305,7 +308,9 @@ CreateThread(function()
 end)
 
 CreateThread(function()
-
+	while not LocalPlayer.state.isLoggedIn do
+		Wait(0)
+	end
 	while true do
 		Wait(2000)
 		local PlayerData = QBCore.Functions.GetPlayerData()
@@ -423,6 +428,9 @@ end)
 -- Weapons
 if Config.ui.showWeapons then
 	CreateThread(function()
+		while not LocalPlayer.state.isLoggedIn do
+			Wait(0)
+		end
 			while true do
 				local Sleep = 800
 
