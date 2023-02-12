@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Trew HUD UI'
 
-version '2.0.0'
+version '2.0.1'
 lua54 'yes'
 
 ui_page 'html/ui.html'
@@ -121,8 +121,7 @@ files {
 }
 
 shared_scripts {
-	'@es_extended/imports.lua',
-	'@es_extended/locale.lua',
+	'translation.lua',
 	'locales/*.lua',
 	'config.lua',
 }
@@ -136,6 +135,6 @@ server_scripts {
 }
 
 dependencies {
-	'es_extended',
-	'esx_society'
+	'qb-core',
+	'qb-management'
 }

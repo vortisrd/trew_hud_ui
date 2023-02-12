@@ -14,6 +14,89 @@ function Startup()
 	SendNUIMessage({ action = 'setMoney', id = 'plyId', value = tostring(ServerId)  })
 end
 
+function trewDate()
+	local timeString = nil
+	local weekDay = Translate('weekDay_' .. GetClockDayOfWeek())
+	local month = Translate('month_' .. GetClockMonth())
+	local day = Translate('day_' .. GetClockDayOfMonth())
+	local year = GetClockYear()
+	local hour = GetClockHours()
+	local minutes = GetClockMinutes()
+	local time = nil
+	local AmPm = ''
+
+
+	if Config.date.AmPm then
+		if hour >= 13 and hour <= 24 then
+			hour = hour - 12
+			AmPm = 'PM'
+		else
+			if hour == 0 or hour == 24 then
+				hour = 12
+			end
+			AmPm = 'AM'
+		end
+
+	end
+
+	if hour <= 9 then
+		hour = '0' .. hour
+	end
+	if minutes <= 9 then
+		minutes = '0' .. minutes
+	end
+
+	time = hour .. ':' .. minutes .. ' ' .. AmPm
+
+	local date_format = Locales[Config.Locale]['date_format'][Config.date.format]
+
+	if Config.date.format == 'default' then
+		timeString = string.format(
+			date_format,
+			day, month, year
+		)
+	elseif Config.date.format == 'simple' then
+		timeString = string.format(
+			date_format,
+			day, month
+		)
+
+	elseif Config.date.format == 'simpleWithHours' then
+		timeString = string.format(
+			date_format,
+			time, day, month
+		)	
+	elseif Config.date.format == 'withWeekday' then
+		timeString = string.format(
+			date_format,
+			weekDay, day, month, year
+		)
+	elseif Config.date.format == 'withHours' then
+		timeString = string.format(
+			date_format,
+			time, day, month, year
+		)
+	elseif Config.date.format == 'withWeekdayAndHours' then
+		timeString = string.format(
+			date_format,
+			time, weekDay, day, month, year
+		)
+	end
+
+	return timeString
+end
+
+function has_value(tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
+
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 	Startup()
 end)
@@ -506,88 +589,6 @@ AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 	SetVehicleIndicatorLights(driver, 0, leftLight)
 	SetVehicleIndicatorLights(driver, 1, rightLight)
 end)
-
-function trewDate()
-	local timeString = nil
-	local weekDay = Translate('weekDay_' .. GetClockDayOfWeek())
-	local month = Translate('month_' .. GetClockMonth())
-	local day = Translate('day_' .. GetClockDayOfMonth())
-	local year = GetClockYear()
-	local hour = GetClockHours()
-	local minutes = GetClockMinutes()
-	local time = nil
-	local AmPm = ''
-
-
-	if Config.date.AmPm then
-		if hour >= 13 and hour <= 24 then
-			hour = hour - 12
-			AmPm = 'PM'
-		else
-			if hour == 0 or hour == 24 then
-				hour = 12
-			end
-			AmPm = 'AM'
-		end
-
-	end
-
-	if hour <= 9 then
-		hour = '0' .. hour
-	end
-	if minutes <= 9 then
-		minutes = '0' .. minutes
-	end
-
-	time = hour .. ':' .. minutes .. ' ' .. AmPm
-
-	local date_format = Locales[Config.Locale]['date_format'][Config.date.format]
-
-	if Config.date.format == 'default' then
-		timeString = string.format(
-			date_format,
-			day, month, year
-		)
-	elseif Config.date.format == 'simple' then
-		timeString = string.format(
-			date_format,
-			day, month
-		)
-
-	elseif Config.date.format == 'simpleWithHours' then
-		timeString = string.format(
-			date_format,
-			time, day, month
-		)	
-	elseif Config.date.format == 'withWeekday' then
-		timeString = string.format(
-			date_format,
-			weekDay, day, month, year
-		)
-	elseif Config.date.format == 'withHours' then
-		timeString = string.format(
-			date_format,
-			time, day, month, year
-		)
-	elseif Config.date.format == 'withWeekdayAndHours' then
-		timeString = string.format(
-			date_format,
-			time, weekDay, day, month, year
-		)
-	end
-
-	return timeString
-end
-
-function has_value(tab, val)
-    for index, value in ipairs(tab) do
-        if value == val then
-            return true
-        end
-    end
-
-    return false
-end
 
 local toggleui = false
 RegisterCommand('toggleui', function()
