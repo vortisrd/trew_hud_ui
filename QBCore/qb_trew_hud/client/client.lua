@@ -111,14 +111,10 @@ local currSpeed = 0.0
 local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 -- From ESX Legacy/ESX Infinity
-function RegisterInput(command_name, label, input_group, key, on_press, on_release)
-    RegisterCommand(on_release ~= nil and "+" .. command_name or command_name, on_press)
-    if on_release then
-        RegisterCommand("-" .. command_name, on_release)
-        TriggerEvent('chat:removeSuggestion', '/-' .. command_name)
-    end
-    RegisterKeyMapping(on_release ~= nil and "+" .. command_name or command_name, label, input_group, key)
-    TriggerEvent('chat:removeSuggestion', '/'..on_release ~= nil and "+" .. command_name or command_name)
+function RegisterInput(command_name, label, input_group, key, on_press)
+    RegisterCommand(command_name, on_press)
+    RegisterKeyMapping(command_name, label, input_group, key)
+    TriggerEvent('chat:removeSuggestion', '/'.. command_name)
 end
 
 CreateThread(function()

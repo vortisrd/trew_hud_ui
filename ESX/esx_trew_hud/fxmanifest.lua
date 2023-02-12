@@ -130,6 +130,7 @@ shared_scripts {
 client_scripts {
 	'client/client.lua',
 }
+
 dependencies {
 	'es_extended',
 	'esx_society'
