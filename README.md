@@ -1,4 +1,4 @@
-<h1 align='center'>[ESX] Trew Hud </a></h1><p align='center'><b>2023 Remaster By Mycroft</b></p>
+<h1 align='center'>[ESX/QB] Trew Hud </a></h1><p align='center'><b>2023 Remaster By Mycroft</b></p>
 
 One of the most, if not **the most**, popular hud for FiveM brought back with a new life - running with 0.03-0.05ms resmon and 2023 Resource support!
 
@@ -12,6 +12,7 @@ One of the most, if not **the most**, popular hud for FiveM brought back with a 
 + Better Font
 + Completely Client-Sided
 + Added Player Id to HUD
++ Added QBCore Support (Including Stress and Crypto!)
 - Removed Unused Code
 - Removed Unused Files
 - Removed vRP support
@@ -39,7 +40,14 @@ One of the most, if not **the most**, popular hud for FiveM brought back with a 
 
 - [esx_basicneeds](https://github.com/esx-framework/esx_basicneeds)
 - [esx_status](https://github.com/esx-framework/esx_status)
+  
+### QBCore
 
+#### Requirements
+
+- [QBCore](https://github.com/qbcore-framework/qb-core)
+- [qb-management](https://github.com/qbcore-framework/qb-management)
+  
 ## Commands
 
 **/toggleui**  
