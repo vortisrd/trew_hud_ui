@@ -76,6 +76,7 @@ window.onload = function () {
 				if (config.showStamina == true) { document.querySelector('#stamina').style.display = 'block'; }
 				if (config.showHunger == true) { document.querySelector('#hunger').style.display = 'block'; }
 				if (config.showThirst == true) { document.querySelector('#thirst').style.display = 'block'; }
+				if (config.showID == true) { document.querySelector('#plyId').style.display = 'block'; }
 
 				if (config.showJob == true) { document.querySelector('#job').style.display = 'block'; }
 				if (config.showDate == true) { document.querySelector('#date').style.display = 'block'; }
@@ -454,6 +455,30 @@ window.onload = function () {
 
 
 			},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
 
 		};
 

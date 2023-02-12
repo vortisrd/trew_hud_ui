@@ -46,6 +46,7 @@ Config.ui = {
 	showStamina	 		= true,
 	showHunger 			= true,
 	showThirst	 		= true,
+	showID	 			= true,
 
 	showMinimap			= false,
 
