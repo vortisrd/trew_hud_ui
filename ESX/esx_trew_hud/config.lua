@@ -28,27 +28,28 @@ Config.vehicle = {
 }
 
 Config.ui = {
-	showServerLogo		= false,
+	showServerLogo		 = false,
 
-	showJob		 		= true,
+	showJob		 		 = true,
 
-	showWalletMoney 	= true,
-	showBankMoney 		= true,
-	showBlackMoney 		= false,
-	showSocietyMoney	= true,
+	showWalletMoney 	 = true,
+	showBankMoney 		 = true,
+	showBlackMoney 		 = false,
+	showSocietyMoney	 = true,
 
-	showDate 			= true,
-	showLocation 		= true,
-	showVoice	 		= true,
+	showDate 			 = true,
+	showLocation 		 = true,
+	showVoice	 		 = true,
 
-	showHealth			= true,
-	showArmor	 		= true,
-	showStamina	 		= true,
-	showHunger 			= true,
-	showThirst	 		= true,
-	showID	 			= true,
+	showHealth			 = true,
+	showArmor	 		 = true,
+	showStamina	 		 = true,
+	showHunger 			 = true,
+	showThirst	 		 = true,
+	showID	 			 = true,
 
-	showMinimap			= false,
+	showMinimapOnFoot 	 = false,
+	showMinimapInVehicle = true,
 
-	showWeapons			= true,	
+	showWeapons			 = true,	
 }

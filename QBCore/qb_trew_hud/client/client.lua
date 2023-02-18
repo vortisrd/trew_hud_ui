@@ -144,7 +144,7 @@ CreateThread(function()
 		if IsPedInAnyVehicle(player, false) and vehicleIsOn then
 			local vehicleClass = GetVehicleClass(vehicle)
 
-			if not Config.ui.showMinimap then
+			if not Config.ui.showMinimapOnFoot and Config.ui.showMinimapInVehicle then
 				DisplayRadar(true)
 			end
 
@@ -265,7 +265,7 @@ CreateThread(function()
 				type = 0,
 			}
 
-			if Config.ui.showMinimap == false then
+			if not Config.ui.showMinimapOnFoot then
 				DisplayRadar(false)
 			end
 

@@ -49,7 +49,8 @@ Config.ui = {
 	showStress	 		= true,
 	showID	 			= true,
 
-	showMinimap			= false,
+	showMinimapOnFoot 	 = false,
+	showMinimapInVehicle = true,
 
 	showWeapons			= true,	
 }
