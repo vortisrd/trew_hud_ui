@@ -393,7 +393,7 @@ CreateThread(function()
   		showPlayerStatus = (showPlayerStatus+1)
 		playerStatus['status'][showPlayerStatus] = {
 			name = 'hunger',
-			value = math.floor(100-PlayerData.metadata["hunger"])
+			value = math.floor(PlayerData.metadata["hunger"])
 		}
   	end
 
@@ -401,7 +401,7 @@ CreateThread(function()
   		showPlayerStatus = (showPlayerStatus+1)
 		playerStatus['status'][showPlayerStatus] = {
 			name = 'thirst',
-			value = math.floor(100-PlayerData.metadata["thirst"])
+			value = math.floor(PlayerData.metadata["thirst"])
 		}
   	end
 
@@ -409,7 +409,7 @@ CreateThread(function()
 		showPlayerStatus = (showPlayerStatus+1)
 	  	playerStatus['status'][showPlayerStatus] = {
 		  name = 'stress',
-		  value = math.floor(100-PlayerData.metadata["stress"])
+		  value = math.floor(PlayerData.metadata["stress"] > 1 and (PlayerData.metadata["stress"] / PlayerData.metadata["stress"]) * 100 or 1)
 	  }
 	end
 
