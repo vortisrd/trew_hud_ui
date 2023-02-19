@@ -634,3 +634,23 @@ exports('setStatus', function(args)
 	}}
 	SendNUIMessage(playerStatus)
 end)
+
+if Config.ui.showMinimapHealth then 
+	Citizen.CreateThread(function()
+		local minimap = RequestScaleformMovie("minimap")
+		SetBigmapActive(true, false)
+		Wait(0)
+		SetBigmapActive(false, false)
+		while true do
+			local Sleep = 500
+			if not IsRadarHidden() then
+				Sleep = 0
+				BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
+				ScaleformMovieMethodAddParamInt(3)
+				EndScaleformMovieMethod()
+			end
+			Wait(Sleep)
+		end
+	
+	end)
+end

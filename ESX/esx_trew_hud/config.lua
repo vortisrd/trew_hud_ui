@@ -50,6 +50,7 @@ Config.ui = {
 
 	showMinimapOnFoot 	 = false,
 	showMinimapInVehicle = true,
+	showMinimapHealth    = false,
 
 	showWeapons			 = true,	
 }
