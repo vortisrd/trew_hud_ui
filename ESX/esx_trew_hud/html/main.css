@@ -171,7 +171,7 @@ div.separator { display: block; clear: both; width: 100%; }
 
 .info.radio #voice.whisper { background: linear-gradient(180deg, #ffb700 0%, #e0a102 100%); }
 .info.radio #voice.normal { background: linear-gradient(180deg, #18b70b 0%, #128c08 100%); }
-.info.radio #voice.shout { background: linear-gradient(180deg, #ff0000 0%, #aa0000 100%); }
+.info.radio #voice.shouting { background: linear-gradient(180deg, #ff0000 0%, #aa0000 100%); }
 .info.radio #voice i.fas { font-size: 18px; color: #FFF; }
 .info.radio #voice.speak { animation: trew-soundwave 1s infinite; }
 
