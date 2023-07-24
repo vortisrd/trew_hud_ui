@@ -630,7 +630,7 @@ exports('setStatus', function(args)
 	SendNUIMessage(playerStatus)
 end)
 
-if Config.ui.showMinimapHealth then 
+if not Config.ui.showMinimapHealth then 
 	Citizen.CreateThread(function()
 		local minimap = RequestScaleformMovie("minimap")
 		SetBigmapActive(true, false)
